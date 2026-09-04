@@ -87,6 +87,10 @@
     state.answers = [null, null, null, null, null];
     state.idx = 0;
     state.result = null;
+    state.submitting = false;
+    $("btn-human").disabled = false;
+    $("btn-bot").disabled = false;
+    $("scoring").classList.add("hidden");
     $("practice-banner").classList.toggle("hidden", mode === "daily");
     renderCard();
     show("screen-card");
@@ -122,11 +126,18 @@
   }
 
   function answer(guessedBot) {
+    if (state.submitting) return;
     state.answers[state.idx] = guessedBot;
     if (state.idx < 4) {
       state.idx++;
       renderCard();
     } else {
+      // 5th answer: lock the controls and show feedback immediately so a
+      // slow network can't invite a second tap.
+      state.submitting = true;
+      $("btn-human").disabled = true;
+      $("btn-bot").disabled = true;
+      $("scoring").classList.remove("hidden");
       submitRound();
     }
   }
@@ -148,6 +159,10 @@
       renderReveal();
       show("screen-reveal");
     } catch (e) {
+      state.submitting = false;
+      $("btn-human").disabled = false;
+      $("btn-bot").disabled = false;
+      $("scoring").classList.add("hidden");
       alert(t("reminder_err"));
     }
   }
@@ -417,7 +432,7 @@
 
   function flyOff(dir, dy) {
     // dir: 1 = right (HUMAN), -1 = left (BOT)
-    if (flying) return;
+    if (flying || state.submitting) return;
     flying = true;
     const stamp = dir === 1 ? stampHuman : stampBot;
     stamp.style.opacity = "1";

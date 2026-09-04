@@ -258,3 +258,8 @@ h3 { font-size: 1.1rem; margin: 28px 0 8px; }
 .archive-toggle .chevron { transition: transform 0.2s; color: var(--muted); }
 .archive-toggle[aria-expanded="false"] .chevron { transform: rotate(-90deg); }
 #archive-body.collapsed { display: none; }
+
+/* 5th-answer lock: immediate feedback while the submit round-trips. */
+.scoring { text-align: center; color: var(--accent, #4c8dff); font-weight: 600; margin-top: 14px; animation: scoring-pulse 1.1s ease-in-out infinite; }
+@keyframes scoring-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+.btn.answer:disabled { opacity: 0.45; pointer-events: none; }
