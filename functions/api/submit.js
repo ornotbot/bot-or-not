@@ -62,6 +62,9 @@ export async function onRequestPost({ request, env }) {
       pct_correct: perCard[i],
       author: c.author || null,
     })),
+    players_today: isDaily
+      ? (await env.DB.prepare("SELECT COUNT(*) AS n FROM plays WHERE date = ?").bind(playerToday).all()).results[0].n
+      : null,
     percentile: isDaily ? await computePercentile(env.DB, date, score) : null,
     streak: await computeStreak(env.DB, anonId, tz),
   });

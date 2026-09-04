@@ -231,3 +231,5 @@ h3 { font-size: 1.1rem; margin: 28px 0 8px; }
   border: 1px solid var(--bot); color: var(--bot); border-radius: 999px;
   font-size: 0.75rem; font-weight: 800; letter-spacing: 1px;
 }
+
+.players-line { color: var(--muted); font-size: 0.95rem; margin: 4px 0 10px; }

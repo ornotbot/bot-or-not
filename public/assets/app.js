@@ -68,6 +68,7 @@
     // Social proof from yesterday (independent of today's round being up).
     try {
       const stats = await api(`/api/stats?tz=${encodeURIComponent(state.tz)}`);
+      renderPlayerCount($("landing-players"), stats.players_today);
       if (stats.available && stats.most_fooled) {
         $("landing-stats").textContent = t("fooled_stat", stats.most_fooled.fooled_pct, stats.most_fooled.card_index);
         $("landing-stats").classList.remove("hidden");
@@ -199,6 +200,14 @@
     return d.innerHTML;
   }
 
+  // Real server-side player count, display-gated: below 100 the count stays
+  // hidden behind "Be one of the first today." - no fake numbers anywhere.
+  function renderPlayerCount(el, n) {
+    if (n == null) return;
+    el.textContent = n >= 100 ? t("players_count", n) : t("players_early");
+    el.classList.remove("hidden");
+  }
+
   // ---------- score ----------
   function renderScore() {
     const r = state.result;
@@ -206,6 +215,7 @@
     const results = r.cards.map((c) => c.correct);
     $("score-grid").textContent = results.map((ok) => (ok ? "🟩" : "🟥")).join("");
     $("score-streak").textContent = t("streak", r.streak || 0);
+    renderPlayerCount($("score-players"), r.players_today);
     if (r.percentile != null) {
       $("score-percentile").textContent = t("better_than", r.percentile);
     } else {

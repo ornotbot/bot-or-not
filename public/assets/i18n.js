@@ -44,6 +44,8 @@ const I18N = {
     view_original: "לפוסט המקורי",
     written_by_ai: "נכתב על ידי AI",
     no_endorsement: "ציוץ ציבורי מוצג למשחק - אין בו משום תמיכה.",
+    players_early: "היו מהראשונים היום.",
+    players_count: (n) => `${n.toLocaleString("en-US")} אנשים שיחקו היום`,
   },
   en: {
     landing_headline: "5 texts a day. Some are human. Some are AI. Can you tell?",
@@ -89,6 +91,8 @@ const I18N = {
     view_original: "View original post",
     written_by_ai: "Written by AI",
     no_endorsement: "Public post quoted for the game - no endorsement implied.",
+    players_early: "Be one of the first today.",
+    players_count: (n) => `${n.toLocaleString("en-US")} people played today`,
   },
 };
 
