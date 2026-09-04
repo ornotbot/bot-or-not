@@ -1,80 +1,130 @@
 #!/usr/bin/env node
 /**
- * Bot or Not - content pipeline (SKELETON).
+ * Bot or Not - content pipeline (spec section 2).
  *
- * Weekly local job: source human texts -> generate AI twins -> QC gates ->
- * emit a SQL file of day-rows for D1. See README.md for the full checklist.
+ * Commands:
+ *   source                     Pull pre-2023 human candidates (HN Algolia) -> data/human-pool.json
+ *   generate                   LLM-generate AI twins for pool texts -> data/twins.json
+ *                              (needs ANTHROPIC_API_KEY / OPENAI_API_KEY / GEMINI_API_KEY;
+ *                               or skip and hand-author data/twins.json in the weekly review)
+ *   qc                         Run all gates over pool + twins -> data/qc-report.json
+ *   build --days N --start YYYY-MM-DD
+ *                              Assemble day-rows -> ../data/seed-days.json + ../seed.sql
  *
- * Nothing below is wired to real sources or LLM APIs yet; every stage is a
- * documented stub so the shape is settled before content work starts.
+ * Weekly flow (spec): source -> generate -> qc -> human review pass (write
+ * tells, eyeball) -> build -> load into D1.
  */
+const fs = require("fs");
+const path = require("path");
+const { sourceHN } = require("./lib/source");
+const { generateTwins } = require("./lib/generate");
+const qc = require("./lib/qc");
+const { complete } = require("./lib/llm");
 
-const CONFIG = {
-  daysPerBatch: 14,
-  cardsPerDay: 5,
-  wordBand: [25, 55], // length parity gate
-  aiBanList: ["—", "delve", "it's not just", "in today's fast-paced world", "game-changer"],
-  llm: {
-    generator: "gemini-2.5-flash-lite", // or gpt-4o-mini
-    adversary: "gpt-4o-mini",           // second model, blind classifier
-  },
-};
+const DATA = path.join(__dirname, "..", "data");
+const read = (f) => JSON.parse(fs.readFileSync(path.join(DATA, f), "utf8"));
+const write = (f, o) => fs.writeFileSync(path.join(DATA, f), JSON.stringify(o, null, 2));
 
-// --- Stage 1: source human candidates -------------------------------------
-async function sourceHumanTexts() {
-  // TODO: pre-2023 Reddit/HN archive pull. Filter 20-80 words, no links,
-  // no subreddit jargon. Return [{text, topic, source}].
-  throw new Error("not implemented: human sourcing is a separate workstream");
+const PLATFORMS = ["linkedin", "x", "whatsapp"];
+
+async function cmdSource() {
+  const pool = await sourceHN({});
+  // tag a platform candidate by register: lowercase-start + casual -> whatsapp/x, polished -> linkedin
+  for (const p of pool) {
+    const casual = /^[a-z]/.test(p.text) || /\b(gonna|wanna|lol|tbh|imo)\b/i.test(p.text);
+    p.platform = casual ? (p.words < 40 ? "whatsapp" : "x") : (p.words > 45 ? "linkedin" : "x");
+  }
+  write("human-pool.json", pool);
+  console.log(`sourced ${pool.length} usable human texts -> data/human-pool.json`);
 }
 
-// --- Stage 2: generate AI twins -------------------------------------------
-async function generateAiTwin(humanText, contextLabel) {
-  // TODO: call CONFIG.llm.generator with context label + topic + persona +
-  // length band + ban list + 3 few-shot human anchors. 4 candidates, pick 1.
-  throw new Error("not implemented");
+async function cmdGenerate() {
+  const pool = read("human-pool.json").filter((p) => p.selected);
+  if (!pool.length) throw new Error("mark pool entries selected:true first (weekly review)");
+  const twins = await generateTwins(pool, complete);
+  write("twins.json", twins);
+  console.log(`generated twins for ${twins.length} human texts -> data/twins.json`);
 }
 
-// --- Stage 3: QC gates ------------------------------------------------------
-function wordCount(s) {
-  return s.trim().split(/\s+/).length;
+async function cmdQc() {
+  const pool = read("human-pool.json").filter((p) => p.selected);
+  const twins = read("twins.json");
+  const items = [
+    ...pool.map((p) => ({ key: p.key, text: p.text, is_ai: false })),
+    ...twins.filter((t) => t.picked).map((t) => ({ key: "twin-" + t.for, text: t.picked, is_ai: true })),
+  ];
+  const report = { length: [], banlist: [], adversary: null };
+  for (const it of items) {
+    const n = qc.wordCount(it.text);
+    if (n < qc.CONFIG.wordBand[0] || n > qc.CONFIG.wordBand[1]) {
+      report.length.push({ key: it.key, words: n });
+    }
+    if (it.is_ai) {
+      const hits = qc.banListHits(it.text);
+      if (hits.length) report.banlist.push({ key: it.key, hits });
+    }
+  }
+  if (process.env.SKIP_ADVERSARY) {
+    report.adversary = "skipped (SKIP_ADVERSARY set)";
+  } else {
+    report.adversary = await qc.adversarialCheck(items, complete);
+  }
+  write("qc-report.json", report);
+  const kills = (report.adversary || []).filter?.((r) => r.kill) || [];
+  console.log(`QC: ${report.length.length} length violations, ${report.banlist.length} ban-list hits, ${kills.length} adversary kills -> data/qc-report.json`);
 }
 
-function passesLengthParity(texts) {
-  return texts.every((t) => {
-    const n = wordCount(t);
-    return n >= CONFIG.wordBand[0] && n <= CONFIG.wordBand[1];
-  });
+function cmdBuild(argv) {
+  const daysN = parseInt(argv[argv.indexOf("--days") + 1] || "7");
+  const start = argv[argv.indexOf("--start") + 1];
+  if (!start) throw new Error("--start YYYY-MM-DD required");
+  const pool = read("human-pool.json").filter((p) => p.selected && !p.killed);
+  const twins = read("twins.json").filter((t) => t.picked && !t.killed);
+  const labels = read("labels.json"); // {key: {context_label:{he,en}, tell:{he,en}}} from weekly review
+
+  const humans = [...pool], ais = [...twins];
+  const days = [];
+  const startDate = new Date(start + "T12:00:00Z");
+  for (let d = 0; d < daysN; d++) {
+    const date = new Date(startDate.getTime() + d * 86400000).toISOString().slice(0, 10);
+    // ratio: alternate 3H/2AI and 2H/3AI (spec: never a fixed pattern)
+    const wantHuman = d % 2 === 0 ? 3 : 2;
+    const cards = [];
+    let id = 1;
+    for (let i = 0; i < wantHuman && humans.length; i++) {
+      const h = humans.shift();
+      cards.push(mkCard(id++, h.text, false, h.platform, labels[h.key]));
+    }
+    for (let i = 0; i < 5 - wantHuman && ais.length; i++) {
+      const a = ais.shift();
+      cards.push(mkCard(id++, a.picked, true, a.platform, labels["twin-" + a.for]));
+    }
+    if (cards.length < 5) throw new Error(`day ${date}: only ${cards.length} cards - need more content`);
+    // shuffle card order, re-id
+    cards.sort(() => Math.random() - 0.5).forEach((c, i) => (c.id = i + 1));
+    days.push({ date, day_number: d + 1, cards });
+  }
+  fs.writeFileSync(path.join(DATA, "seed-days.json"), JSON.stringify(days, null, 2));
+
+  const esc = (s) => s.replace(/'/g, "''");
+  let sql = "-- Generated by content-pipeline. Real pre-2023 human texts + matched AI twins.\n";
+  sql += "INSERT OR REPLACE INTO days (date, day_number, cards_json) VALUES\n";
+  sql += days.map((d) => `  ('${d.date}', ${d.day_number}, '${esc(JSON.stringify(d.cards))}')`).join(",\n") + ";\n";
+  // days no longer present should disappear (replaces placeholder days)
+  sql += `DELETE FROM days WHERE date NOT IN (${days.map((d) => `'${d.date}'`).join(",")});\n`;
+  fs.writeFileSync(path.join(__dirname, "..", "seed.sql"), sql);
+  console.log(`built ${days.length} days from ${start} -> data/seed-days.json + seed.sql`);
 }
 
-function passesBanList(aiText) {
-  const lower = aiText.toLowerCase();
-  return !CONFIG.aiBanList.some((b) => lower.includes(b.toLowerCase()));
+function mkCard(id, text, is_ai, platform, label) {
+  if (!label) throw new Error(`missing labels.json entry for a card (platform ${platform})`);
+  return { id, platform, context_label: label.context_label, text, is_ai, tell: label.tell };
 }
 
-function normalizeHuman(text) {
-  // Light touch: capitalize first letter only. KEEP typos - over-cleaning
-  // makes humans look like AI (spec section 2).
-  return text.charAt(0).toUpperCase() + text.slice(1);
+const cmd = process.argv[2];
+const fn = { source: cmdSource, generate: cmdGenerate, qc: cmdQc, build: () => cmdBuild(process.argv) }[cmd];
+if (!fn) {
+  console.log("usage: node pipeline.js source|generate|qc|build [--days N --start DATE]");
+  process.exit(1);
 }
-
-async function adversarialCheck(texts) {
-  // TODO: blind-classify each text with CONFIG.llm.adversary. Kill AI texts
-  // it catches with high confidence; kill human texts it flags as AI.
-  throw new Error("not implemented");
-}
-
-// --- Stage 4: emit D1 SQL ---------------------------------------------------
-function dayRow(date, dayNumber, cards) {
-  // cards: [{id, context_label:{he,en}, text, is_ai, tell:{he,en}}]
-  return { date, day_number: dayNumber, cards_json: JSON.stringify(cards) };
-}
-
-async function main() {
-  console.log("Bot or Not content pipeline - SKELETON, nothing to run yet.");
-  console.log("See content-pipeline/README.md for the stage checklist.");
-  console.log("Gates implemented so far: length parity, ban list, human normalization.");
-}
-
-if (require.main === module) main();
-
-module.exports = { passesLengthParity, passesBanList, normalizeHuman, wordCount, dayRow };
+Promise.resolve(fn()).catch((e) => { console.error(e.message); process.exit(1); });

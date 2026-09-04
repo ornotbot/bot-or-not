@@ -1,0 +1,392 @@
+{
+  "hn-9999616": {
+    "context_label": {
+      "he": "פוסט ב-X על תהליכי גיוס",
+      "en": "Post on X about hiring processes"
+    },
+    "tell": {
+      "he": "משפט חד עם טוויסט - זהב של פורומים אנושיים. AI כמעט לא מייצר משפט כל כך נצטט בלי ריפוד.",
+      "en": "A quotable twist with zero padding. AI rarely lands a line this clean without hedging."
+    }
+  },
+  "hn-9998875": {
+    "context_label": {
+      "he": "תגובה ב-X לשרשור על משכורות מפתחים",
+      "en": "Reply on X to a thread about developer salaries"
+    },
+    "tell": {
+      "he": "ציניות עם פסיכולוגיה ספציפית ('רוקסטאר שלא יודע שהוא') - מודלים מכלילים, בני אדם מרכלים.",
+      "en": "Cynical, specific psychology ('rockstar who doesn't know it'). Models generalize, humans gossip."
+    }
+  },
+  "hn-9900581": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא סטארטאפים שנסגרים",
+      "en": "LinkedIn comment on a post about startup postmortems"
+    },
+    "tell": {
+      "he": "נגמר בשאלה פתוחה בלי מענה. AI סוגר מעגלים, בני אדם משאירים אותם תלויים.",
+      "en": "Ends on an open question with no resolution. AI closes loops; humans leave them hanging."
+    }
+  },
+  "hn-9900051": {
+    "context_label": {
+      "he": "פוסט ב-X על יזמים שנכשלו",
+      "en": "Post on X about failed founders"
+    },
+    "tell": {
+      "he": "המבנה a) b) באמצע משפט והסטירה לפוסט-מורטמים ב-Medium - ניסיון חי, לא סיכום.",
+      "en": "The a) b) list mid-sentence and the jab at Medium postmortems is lived experience, not summary."
+    }
+  },
+  "hn-9796332": {
+    "context_label": {
+      "he": "תגובה ב-X לשרשור על סטארטאפים שנסגרו",
+      "en": "Reply on X to a thread about failed startups"
+    },
+    "tell": {
+      "he": "מזכיר בוטקאמפ ספציפי ותוכנית לא גמורה. AI ממציא החלמות מעורפלות יותר.",
+      "en": "Names a specific bootcamp and an unfinished plan. AI invents vaguer recoveries."
+    }
+  },
+  "hn-9956275": {
+    "context_label": {
+      "he": "הודעה בקבוצת וואטסאפ של עובדי הייטק על פיטורים",
+      "en": "WhatsApp message in a tech workers group about layoffs"
+    },
+    "tell": {
+      "he": "אותיות קטנות, בלי הקדמה, ו'כשהחיתול רטוב' - שום מודל לא כותב את המטאפורה הזו.",
+      "en": "Lowercase, no preamble, and 'when the diaper is wet'. No model writes that metaphor."
+    }
+  },
+  "hn-9952046": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא פיטורים שקטים",
+      "en": "LinkedIn comment on a post about quiet layoffs"
+    },
+    "tell": {
+      "he": "שגיאת הכתיב 'have a have a' שרדה. AI לא מכפיל מילים, בני אדם עייפים כן.",
+      "en": "The typo 'have a have a' survived. AI doesn't double words; tired humans do."
+    }
+  },
+  "hn-9882778": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא לשרוד פיטורים",
+      "en": "LinkedIn comment on a post about surviving layoffs"
+    },
+    "tell": {
+      "he": "הכרת תודה מרירה ('צ'ק בתמורה לזכות החברה שלי') - מורכבות רגשית שמודלים משטחים.",
+      "en": "Bitter gratitude ('a check for the privilege of my company') is emotionally complex in a way models flatten."
+    }
+  },
+  "hn-9881804": {
+    "context_label": {
+      "he": "הודעה בקבוצת וואטסאפ על הודעת פיטורים של מנכ\"ל",
+      "en": "WhatsApp message in a group about a CEO's layoff announcement"
+    },
+    "tell": {
+      "he": "אפס הקשר, ישר לפיצויים. אנשים אמיתיים בקבוצות מדלגים על ההקדמה.",
+      "en": "Zero context, straight to severance. Real people in group chats skip the preamble."
+    }
+  },
+  "hn-9996900": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא ביטול ישיבות",
+      "en": "LinkedIn comment on a post about killing meetings"
+    },
+    "tell": {
+      "he": "הסוגריים המגושמים '(non handicapped)' - גידוד אנושי ששום מודל לא היה מוסיף.",
+      "en": "The awkward '(non handicapped)' parenthetical is a human hedge no model would add."
+    }
+  },
+  "hn-9991542": {
+    "context_label": {
+      "he": "תגובה בקבוצת וואטסאפ על מקום עבודה רעיל",
+      "en": "WhatsApp reply in a group about a toxic workplace"
+    },
+    "tell": {
+      "he": "התיקון העצמי 'edit:' באמצע הודעה - התנהגות של פורום, לא טקסט מופק.",
+      "en": "The 'edit:' self-correction mid-message is forum behavior, not generated text."
+    }
+  },
+  "hn-9977986": {
+    "context_label": {
+      "he": "פוסט ב-X על עצות נגד שחיקה",
+      "en": "Post on X about burnout advice"
+    },
+    "tell": {
+      "he": "ניסוח מעט מגושם ('differs person to person') עם נקודה אמיתית - AI חלק יותר וריק יותר.",
+      "en": "Slightly clunky phrasing ('differs person to person') with a real point. AI is smoother and emptier."
+    }
+  },
+  "hn-9966017": {
+    "context_label": {
+      "he": "הודעה בקבוצת וואטסאפ של מפתחים על להישאר רלוונטיים",
+      "en": "WhatsApp message in a developers group about keeping up"
+    },
+    "tell": {
+      "he": "'hehe', דקדוק שבור וחרדה מגיל 30 - כנות מבולגנת היא אנושית.",
+      "en": "'hehe', broken grammar, and anxiety about turning 30. Messy sincerity is human."
+    }
+  },
+  "hn-9949909": {
+    "context_label": {
+      "he": "תגובה בקבוצת וואטסאפ על שחיקה",
+      "en": "WhatsApp reply in a group about burnout"
+    },
+    "tell": {
+      "he": "נקודה כפולה '..' וסמיילי ':D' - הרגלי אינטרנט של פעם שמסמנים בן אדם אמיתי.",
+      "en": "Double period '..' and a ':D' - pre-emoji internet mannerisms that mark a real person."
+    }
+  },
+  "hn-9995654": {
+    "context_label": {
+      "he": "פוסט ב-X על ללמד ילדים תכנות",
+      "en": "Post on X about teaching kids to code"
+    },
+    "tell": {
+      "he": "שגיאת דקדוק ('both has') ודעה נחרצת על שפות תכנות לילדים - אנושי קלאסי.",
+      "en": "Grammar error ('both has') plus a strong opinion on kids' programming languages. Classic human."
+    }
+  },
+  "hn-9994177": {
+    "context_label": {
+      "he": "הודעה בקבוצת וואטסאפ של יזמים",
+      "en": "WhatsApp message in a founders group"
+    },
+    "tell": {
+      "he": "התנצלות על איות לפני הקפה, ב-edit, עם מקף - פטפוט אנושי טהור.",
+      "en": "Apologizing for spelling before coffee, in an edit, with a dash. Pure human chatter."
+    }
+  },
+  "hn-9999597": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא חברה גדולה שמשחררת קוד פתוח",
+      "en": "LinkedIn comment on a post about a big company open sourcing a project"
+    },
+    "tell": {
+      "he": "נגמר ב-'Don't count on it' - פסק דין קצר ותקיף. AI מעדיף סיומות מאוזנות.",
+      "en": "Ends with 'Don't count on it' - a blunt two-word verdict. AI prefers balanced closings."
+    }
+  },
+  "hn-999924": {
+    "context_label": {
+      "he": "תגובה ב-X לשרשור על חברות שבונות על קוד פתוח",
+      "en": "Reply on X to a thread about companies building on open source"
+    },
+    "tell": {
+      "he": "שתי שאלות רטוריות ברצף וסטירת רישיונות - רגיסטר ויכוחי שמודלים מרככים.",
+      "en": "Two rhetorical questions in a row and a licensing jab. Models soften this argumentative register."
+    }
+  },
+  "hn-9982725": {
+    "context_label": {
+      "he": "תגובה בקבוצת וואטסאפ על עבודה מהבית",
+      "en": "WhatsApp reply in a group about working from home"
+    },
+    "tell": {
+      "he": "ניסוח מגושם אבל חם, והפרט 'קילומטר וחצי מהבית' הוא אמיתי-להשליך.",
+      "en": "'I second the renting a desk' - awkward but warm, and the mile-from-home detail is throwaway real."
+    }
+  },
+  "hn-995242": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא משרד ביתי מול קו-וורקינג",
+      "en": "LinkedIn comment on a post about home office vs coworking"
+    },
+    "tell": {
+      "he": "סיום מגודד ('אולי זה רק אני') ופרט של 12 חודשים - קצב רפלקטיבי אנושי.",
+      "en": "Hedged ending ('Maybe it's just me') and a 12-month specificity. Reflective human pacing."
+    }
+  },
+  "hn-9902152": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא חללי עבודה משותפים",
+      "en": "LinkedIn comment on a post about coworking spaces"
+    },
+    "tell": {
+      "he": "'Which I find very weird' - וידוי אישי שהושמט באמצע טיעון. AI נשאר על המסר.",
+      "en": "'Which I find very weird' - a personal confession dropped mid-argument. AI stays on thesis."
+    }
+  },
+  "twin-hn-9999616": {
+    "context_label": {
+      "he": "פוסט ב-X על תהליכי גיוס",
+      "en": "Post on X about hiring processes"
+    },
+    "tell": {
+      "he": "האנקדוטה על 'שנתיים לגלות את הדפוס' מומצאת ונקייה מדי - AI מוסיף לקח מסודר לכל סיפור.",
+      "en": "The 'two years to notice the pattern' anecdote is invented and too tidy. AI attaches a clean lesson to every story."
+    }
+  },
+  "twin-hn-9998875": {
+    "context_label": {
+      "he": "תגובה ב-X לשרשור על משכורות מפתחים",
+      "en": "Reply on X to a thread about developer salaries"
+    },
+    "tell": {
+      "he": "מסביר את המטאפורה של עצמו ('סניור במחיר ג'וניור') מיד אחרי שהוא יוצר אותה. בני אדם סומכים על התמונה וממשיכים הלאה.",
+      "en": "Explains its own metaphor right after making it. Humans trust the image and move on."
+    }
+  },
+  "twin-hn-9900581": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא סטארטאפים שנסגרים",
+      "en": "LinkedIn comment on a post about startup postmortems"
+    },
+    "tell": {
+      "he": "גם הווידוי האישי ('סגרתי ב-2019') מנוסח במשפטים מושלמים ומאוזנים - אף אחד לא כותב ככה בכאב.",
+      "en": "Even the personal confession ('shut down in 2019') comes in perfectly balanced sentences. Nobody writes like that from pain."
+    }
+  },
+  "twin-hn-9900051": {
+    "context_label": {
+      "he": "פוסט ב-X על יזמים שנכשלו",
+      "en": "Post on X about failed founders"
+    },
+    "tell": {
+      "he": "ציניות עם דקדוק מושלם ואפס שגיאות כתיב. ציניות אנושית מבולגנת יותר.",
+      "en": "Sarcasm with perfect grammar and no typos. Human snark is usually sloppier."
+    }
+  },
+  "twin-hn-9796332": {
+    "context_label": {
+      "he": "תגובה ב-X לשרשור על סטארטאפים שנסגרו",
+      "en": "Reply on X to a thread about failed startups"
+    },
+    "tell": {
+      "he": "הקשת מסודרת מדי: כישלון, ענווה, בנייה מחדש, תקווה. סיפורי התאוששות אמיתיים משוטטים.",
+      "en": "The arc is too neat: failure, humility, rebuild, hope. Real recovery stories wander."
+    }
+  },
+  "twin-hn-9956275": {
+    "context_label": {
+      "he": "הודעה בקבוצת וואטסאפ של עובדי הייטק על פיטורים",
+      "en": "WhatsApp message in a tech workers group about layoffs"
+    },
+    "tell": {
+      "he": "כמעט עובר - אבל 'בן הדוד שלי נפל בסבב בסן דייגו' מנוסח חלק מדי לצ'אט, בלי שגיאה אחת.",
+      "en": "Almost passes, but 'gone in a 10 minute call' is polished clean. Real group-chat bad news comes with typos."
+    }
+  },
+  "twin-hn-9952046": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא פיטורים שקטים",
+      "en": "LinkedIn comment on a post about quiet layoffs"
+    },
+    "tell": {
+      "he": "מסביר את המנגנון בניקיון כמו תרגיל בבית ספר לעסקים. בני אדם מרמזים ומניחים שאתה יודע.",
+      "en": "Explains the mechanism cleanly like a business school case. Humans hint and assume you know."
+    }
+  },
+  "twin-hn-9882778": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא לשרוד פיטורים",
+      "en": "LinkedIn comment on a post about surviving layoffs"
+    },
+    "tell": {
+      "he": "כל משפט באותו אורך וצורה. ניפוץ זעם אנושי מגוון בקצב.",
+      "en": "Every sentence is the same length and shape. Human venting varies its rhythm."
+    }
+  },
+  "twin-hn-9996900": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא ביטול ישיבות",
+      "en": "LinkedIn comment on a post about killing meetings"
+    },
+    "tell": {
+      "he": "המשפט האחרון הוא מדבקת פגוש. גרסאות אמיתיות של הסיפור הזה נגמרות במה שקרה אחר כך בפועל.",
+      "en": "The last sentence is a bumper sticker. Real versions of this story end with what actually happened next."
+    }
+  },
+  "twin-hn-9991542": {
+    "context_label": {
+      "he": "תגובה בקבוצת וואטסאפ על מקום עבודה רעיל",
+      "en": "WhatsApp reply in a group about a toxic workplace"
+    },
+    "tell": {
+      "he": "פרט ה-'40 אחוז העלאה' עובד קשה מדי - AI מוסיף מספר כדי להישמע אמיתי.",
+      "en": "The '40 percent raise' detail is doing too much work. AI adds a number to sound real."
+    }
+  },
+  "twin-hn-9977986": {
+    "context_label": {
+      "he": "פוסט ב-X על עצות נגד שחיקה",
+      "en": "Post on X about burnout advice"
+    },
+    "tell": {
+      "he": "היגיון מקבילי מושלם על למה עצות נכשלות. בני אדם פשוט אומרים מה עבד להם.",
+      "en": "Perfectly parallel reasoning about why advice fails. Humans just say what worked for them."
+    }
+  },
+  "twin-hn-9966017": {
+    "context_label": {
+      "he": "הודעה בקבוצת וואטסאפ של מפתחים על להישאר רלוונטיים",
+      "en": "WhatsApp message in a developers group about keeping up"
+    },
+    "tell": {
+      "he": "מחקה את הרגיסטר יפה, אבל 'הביקורות שלי דווקא השתפרו' הוא סוף מסודר מדי לשיחת וואטסאפ.",
+      "en": "Mimics the register well, but 'my reviews actually improved' is too neat an ending for a group chat."
+    }
+  },
+  "twin-hn-9949909": {
+    "context_label": {
+      "he": "תגובה בקבוצת וואטסאפ על שחיקה",
+      "en": "WhatsApp reply in a group about burnout"
+    },
+    "tell": {
+      "he": "אותיות קטנות וקז'ואל, אבל כל משפט שלם ועל-נושא. צ'אטים אמיתיים סוטים.",
+      "en": "Lowercase and casual, but every sentence is complete and on-theme. Real chats drift."
+    }
+  },
+  "twin-hn-9995654": {
+    "context_label": {
+      "he": "פוסט ב-X על ללמד ילדים תכנות",
+      "en": "Post on X about teaching kids to code"
+    },
+    "tell": {
+      "he": "האנקדוטה על הילד גנרית (שגיאות הזחה כעלבון אישי). הורים אמיתיים מספרים משהו מוזר וספציפי.",
+      "en": "The kid anecdote is generic (indentation errors as personal attack). Real parents tell something weirder and more specific."
+    }
+  },
+  "twin-hn-9999597": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא חברה גדולה שמשחררת קוד פתוח",
+      "en": "LinkedIn comment on a post about a big company open sourcing a project"
+    },
+    "tell": {
+      "he": "'הייתי המהנדס שהופקד על...' - פתיח של סיפור מושלם. עדות אמיתית מתחילה באמצע.",
+      "en": "'I have been the engineer assigned to...' - a perfectly constructed story opening. Real testimony starts in the middle."
+    }
+  },
+  "twin-hn-999924": {
+    "context_label": {
+      "he": "תגובה ב-X לשרשור על חברות שבונות על קוד פתוח",
+      "en": "Reply on X to a thread about companies building on open source"
+    },
+    "tell": {
+      "he": "טוען לשני הצדדים ונוחת בטוח. ויכוחי רישיונות אנושיים הופכים שבטיים.",
+      "en": "Argues both sides then lands safe. Human licensing debates get tribal."
+    }
+  },
+  "twin-hn-995242": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא משרד ביתי מול קו-וורקינג",
+      "en": "LinkedIn comment on a post about home office vs coworking"
+    },
+    "tell": {
+      "he": "פוגע באותם צ'ק-פוינטים כמו הטקסטים האנושיים אבל נפתר נקי מדי. בלי קצוות פתוחים.",
+      "en": "Hits the same beats as the human texts but resolves too cleanly. No loose ends."
+    }
+  },
+  "twin-hn-9902152": {
+    "context_label": {
+      "he": "תגובה בלינקדאין על פוסט בנושא חללי עבודה משותפים",
+      "en": "LinkedIn comment on a post about coworking spaces"
+    },
+    "tell": {
+      "he": "פרט מכונת הקפה מרגיש נצפה אבל מומצא - המושג של AI ל'ספציפי'.",
+      "en": "The coffee machine detail feels observed but is invented - AI's idea of a specific."
+    }
+  }
+}
