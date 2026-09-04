@@ -1,0 +1,14 @@
+name = "bot-or-not"
+compatibility_date = "2026-09-01"
+
+# Cloudflare Pages project: static assets from ./public, API from ./functions.
+# Local dev: npx wrangler pages dev public --d1 DB=bot-or-not --local
+#
+# D1 binding. Create the DB first:
+#   npx wrangler d1 create bot-or-not
+# then paste the returned database_id below.
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bot-or-not"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"

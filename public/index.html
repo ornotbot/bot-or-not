@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Bot or Not | בוט או לא</title>
+  <meta name="description" content="5 texts a day. Some are human. Some are AI. Can you tell?" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <header id="topbar">
+    <div id="brand">Bot or Not</div>
+    <button id="lang-toggle" type="button" aria-label="Switch language">EN</button>
+  </header>
+
+  <main id="app">
+
+    <!-- Screen 0: Landing -->
+    <section id="screen-landing" class="screen active">
+      <h1 data-i18n="landing_headline"></h1>
+      <p class="sub" data-i18n="landing_sub"></p>
+      <button id="btn-play" class="btn primary big" type="button" data-i18n="play_today"></button>
+      <p id="landing-streak" class="streak-line hidden"></p>
+      <p id="landing-stats" class="social-proof hidden"></p>
+      <p id="landing-error" class="error hidden"></p>
+    </section>
+
+    <!-- Screens 1-5: The round (one card at a time) -->
+    <section id="screen-card" class="screen">
+      <div id="progress-dots" aria-hidden="true">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+      <p id="card-context" class="context-label"></p>
+      <div id="card-text" class="card-text"></div>
+      <div class="answer-row">
+        <button id="btn-human" class="btn answer human" type="button" data-i18n="human"></button>
+        <button id="btn-bot" class="btn answer bot" type="button" data-i18n="bot"></button>
+      </div>
+      <button id="btn-back" class="btn ghost hidden" type="button" data-i18n="back"></button>
+      <p id="practice-banner" class="practice hidden" data-i18n="practice_banner"></p>
+    </section>
+
+    <!-- Screen 6: Reveal -->
+    <section id="screen-reveal" class="screen">
+      <h2 data-i18n="reveal_title"></h2>
+      <div id="reveal-list"></div>
+      <button id="btn-to-score" class="btn primary big" type="button" data-i18n="see_score"></button>
+    </section>
+
+    <!-- Screen 7: Score card -->
+    <section id="screen-score" class="screen">
+      <h2 id="score-line"></h2>
+      <div id="score-grid" class="emoji-grid" aria-hidden="true"></div>
+      <p id="score-streak" class="streak-line"></p>
+      <p id="score-percentile" class="money-line"></p>
+      <div class="share-row">
+        <button id="btn-share" class="btn primary" type="button" data-i18n="share"></button>
+        <button id="btn-tomorrow" class="btn ghost" type="button" data-i18n="see_you_tomorrow"></button>
+      </div>
+      <p id="countdown" class="countdown hidden"></p>
+      <canvas id="share-canvas" width="1080" height="1080" class="hidden"></canvas>
+
+      <div class="below-fold">
+        <h3 data-i18n="archive_title"></h3>
+        <p class="muted" data-i18n="archive_note"></p>
+        <div id="archive-list"></div>
+
+        <h3 data-i18n="reminder_title"></h3>
+        <div id="reminder-form">
+          <div class="reminder-channels">
+            <button class="btn chip selected" data-channel="email" type="button">Email</button>
+            <button class="btn chip" data-channel="whatsapp" type="button">WhatsApp</button>
+          </div>
+          <input id="reminder-address" type="text" inputmode="email" data-i18n-ph="reminder_placeholder" />
+          <button id="btn-reminder" class="btn primary" type="button" data-i18n="reminder_cta"></button>
+          <p id="reminder-msg" class="muted hidden"></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/assets/i18n.js"></script>
+  <script src="/assets/share.js"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>
