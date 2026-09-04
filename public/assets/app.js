@@ -91,7 +91,9 @@
     const i = state.idx;
     const card = state.day.cards[i];
     $("card-context").textContent = card.context_label;
-    $("card-text").textContent = card.text;
+    const frame = $("card-text");
+    frame.innerHTML = "";
+    frame.appendChild(renderPlatformCard(card));
     document.querySelectorAll("#progress-dots .dot").forEach((d, j) => {
       d.classList.toggle("current", j === i);
       d.classList.toggle("answered", state.answers[j] !== null);
@@ -143,9 +145,10 @@
         ? `<span class="verdict-correct">✅ ${t("correct_label")}</span>`
         : `<span class="verdict-wrong">❌ ${t("wrong_label")}</span>`;
       const actual = c.is_ai ? t("was_bot") : t("was_human");
+      const plat = state.day.cards[i].platform ? PLATFORM_NAMES[state.day.cards[i].platform] + " · " : "";
       const stat = c.pct_correct != null ? `<div class="stat">${t("pct_right", c.pct_correct)}</div>` : "";
       div.innerHTML =
-        `<div class="head">${verdict}<span>${t("card_of", i + 1)} - ${actual}</span></div>` +
+        `<div class="head">${verdict}<span>${plat}${t("card_of", i + 1)} - ${actual}</span></div>` +
         `<div class="tell" dir="auto">${escapeHtml(c.tell)}</div>${stat}`;
       list.appendChild(div);
     });

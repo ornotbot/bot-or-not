@@ -7,6 +7,7 @@
   <meta name="description" content="5 texts a day. Some are human. Some are AI. Can you tell?" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/platforms.css" />
 </head>
 <body>
   <header id="topbar">
@@ -32,7 +33,7 @@
         <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
       </div>
       <p id="card-context" class="context-label"></p>
-      <div id="card-text" class="card-text" dir="auto"></div>
+      <div id="card-text" class="card-frame"></div>
       <div class="answer-row">
         <button id="btn-human" class="btn answer human" type="button" data-i18n="human"></button>
         <button id="btn-bot" class="btn answer bot" type="button" data-i18n="bot"></button>
@@ -82,6 +83,7 @@
   </main>
 
   <script src="/assets/i18n.js"></script>
+  <script src="/assets/cards.js"></script>
   <script src="/assets/share.js"></script>
   <script src="/assets/app.js"></script>
 </body>

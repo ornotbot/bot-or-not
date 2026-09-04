@@ -99,3 +99,10 @@ npx wrangler d1 execute bot-or-not --remote --file=seed.sql
 - No build step: plain HTML/CSS/JS in `public/`, Pages Functions in `functions/`.
 - `wrangler.toml` carries the D1 binding for local dev; production binding is
   set on the Pages project (step 4 above).
+
+## Roadmap
+
+- **v2: media cards** - image and video texts (screenshots of image posts,
+  short clips) rendered in the same platform mockups. MVP is text-only.
+- Platform mockups currently: LinkedIn comment, X post, WhatsApp message.
+  Candidates next: Instagram comment, Telegram message, HN/Reddit comment.

@@ -50,6 +50,7 @@ export async function getDayRow(db, date) {
 export function publicCards(cards, lang) {
   return cards.map((c) => ({
     id: c.id,
+    platform: c.platform || "x",
     context_label: c.context_label[lang] || c.context_label.en,
     text: c.text,
   }));
