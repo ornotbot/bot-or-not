@@ -1,14 +1,11 @@
+# Bot or Not - Cloudflare Pages project config.
+# Deploy: ./scripts/deploy.sh  (one command once Cloudflare access exists)
 name = "bot-or-not"
-compatibility_date = "2026-09-01"
-
-# Cloudflare Pages project: static assets from ./public, API from ./functions.
-# Local dev: npx wrangler pages dev public --d1 DB=bot-or-not --local
-#
-# D1 binding. Create the DB first:
-#   npx wrangler d1 create bot-or-not
-# then paste the returned database_id below.
+pages_build_output_dir = "public"
+compatibility_date = "2026-01-01"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "bot-or-not"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "TODO-paste-database_id"  # scripts/deploy.sh fills this in automatically
+migrations_dir = "migrations"  # default anyway; explicit for clarity

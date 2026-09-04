@@ -46,35 +46,26 @@ npx wrangler pages dev public --d1 DB=bot-or-not --local
 # open http://localhost:8788
 ```
 
-## Deploy (Cloudflare) - NOT DONE YET
+## Deploy (Cloudflare) - GO-LIVE
 
-Prereqs: a Cloudflare account (free) and `wrangler login`.
+One command once Cloudflare access exists:
 
-```bash
-# 1. Create the D1 database (once)
-npx wrangler d1 create bot-or-not
-#    -> copy the database_id into wrangler.toml (REPLACE_WITH_D1_DATABASE_ID)
+    CLOUDFLARE_API_TOKEN=... CLOUDFLARE_ACCOUNT_ID=... ./scripts/deploy.sh
+    # or: npx wrangler login  (browser OAuth), then ./scripts/deploy.sh
+    # optional: LAUNCH_DATE=2026-09-05 ./scripts/deploy.sh  (Day #1 lands on this date; default today)
 
-# 2. Apply schema + seed content (remote)
-npx wrangler d1 execute bot-or-not --remote --file=schema.sql
-npx wrangler d1 execute bot-or-not --remote --file=seed.sql
+The script: creates the D1 database (and writes its database_id into both
+wrangler.toml files), applies migrations/0001_init.sql, retimes + loads the 9
+seed days, deploys Pages (live at https://bot-or-not.pages.dev - no custom
+domain needed), and deploys the reminder cron worker.
 
-# 3. Create the Pages project and deploy
-npx wrangler pages project create bot-or-not --production-branch main
-npx wrangler pages deploy public --project-name bot-or-not
-#    -> live at https://bot-or-not.pages.dev
+API token permissions needed (Cloudflare dashboard -> My Profile -> API Tokens):
+Account: Workers Pages: Edit, D1: Edit, Workers Scripts: Edit.
 
-# 4. Bind D1 to the Pages project (dashboard or CLI):
-#    Pages -> bot-or-not -> Settings -> Functions -> D1 database bindings
-#    -> binding name "DB" -> database "bot-or-not"
-#    (or: npx wrangler pages deployment list / dashboard; binding is per-project)
-
-# 5. Optional: custom domain in Pages -> Custom domains.
-#    Then update GAME_URL in public/assets/share.js.
-```
-
-After binding, redeploy once (`npx wrangler pages deploy public --project-name bot-or-not`)
-so the binding picks up.
+Not launch-blocking:
+- Resend (reminder emails): worker runs in dry-run mode until
+  `cd worker && npx wrangler secret put RESEND_API_KEY && npx wrangler deploy`.
+- AI API key: only for automating future content generation; 9 days are seeded.
 
 ## Sharing
 
