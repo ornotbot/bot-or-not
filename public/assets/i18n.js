@@ -77,7 +77,7 @@ const I18N = {
 };
 
 function t(key, ...args) {
-  const lang = window.BON_LANG || "he";
+  const lang = window.BON_LANG || "en";
   const v = I18N[lang][key] ?? I18N.en[key];
   return typeof v === "function" ? v(...args) : v;
 }
@@ -89,8 +89,9 @@ function applyI18n() {
   document.querySelectorAll("[data-i18n-ph]").forEach((el) => {
     el.placeholder = t(el.dataset.i18nPh);
   });
-  const lang = window.BON_LANG || "he";
+  const lang = window.BON_LANG || "en";
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === "he" ? "rtl" : "ltr";
-  document.getElementById("lang-toggle").textContent = lang === "he" ? "EN" : "עב";
+  const toggle = document.getElementById("lang-toggle"); // dormant: button removed for EN-only launch
+  if (toggle) toggle.textContent = lang === "he" ? "EN" : "עב";
 }

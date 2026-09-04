@@ -16,7 +16,7 @@
   }
 
   const state = {
-    lang: localStorage.getItem("bon_lang") || "he",
+    lang: "en", // English-only UI for launch; i18n dicts + toggle kept dormant
     anonId: getAnonId(),
     tz: Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC",
     mode: "daily", // 'daily' | 'practice'
@@ -267,12 +267,6 @@
       percentile: state.result.percentile,
       lang: state.lang,
     });
-  });
-  $("lang-toggle").addEventListener("click", () => {
-    state.lang = state.lang === "he" ? "en" : "he";
-    window.BON_LANG = state.lang;
-    localStorage.setItem("bon_lang", state.lang);
-    initLanding();
   });
 
   // Swipe right = back to previous card (change an answer before submitting).
