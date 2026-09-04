@@ -24,6 +24,8 @@
       <p id="landing-streak" class="streak-line hidden"></p>
       <p id="landing-stats" class="social-proof hidden"></p>
       <p id="landing-players" class="social-proof hidden"></p>
+      <button id="landing-played" class="btn ghost hidden" type="button" data-i18n="played_today"></button>
+      <p id="landing-countdown" class="countdown hidden"></p>
       <p id="landing-error" class="error hidden"></p>
     </section>
 
@@ -38,6 +40,7 @@
         <div id="stamp-human" class="stamp stamp-human" aria-hidden="true">HUMAN</div>
         <div id="stamp-bot" class="stamp stamp-bot" aria-hidden="true">BOT</div>
       </div>
+      <p id="swipe-hint" class="swipe-hint hidden" data-i18n="swipe_hint"></p>
       <div class="answer-row">
         <button id="btn-human" class="btn answer human" type="button" data-i18n="human"></button>
         <button id="btn-bot" class="btn answer bot" type="button" data-i18n="bot"></button>
@@ -60,6 +63,7 @@
       <p id="score-streak" class="streak-line"></p>
       <p id="score-percentile" class="money-line"></p>
       <p id="score-players" class="players-line"></p>
+      <p id="replay-note" class="players-line hidden" data-i18n="replay_note"></p>
       <div class="share-row">
         <button id="btn-share-x" class="btn primary" type="button" data-i18n="share_x"></button>
         <button id="btn-share-linkedin" class="btn primary" type="button" data-i18n="share_linkedin"></button>
@@ -70,9 +74,13 @@
       <canvas id="share-canvas" width="1080" height="1080" class="hidden"></canvas>
 
       <div class="below-fold">
-        <h3 data-i18n="archive_title"></h3>
-        <p class="muted" data-i18n="archive_note"></p>
-        <div id="archive-list"></div>
+        <button id="archive-toggle" class="archive-toggle" type="button" aria-expanded="true">
+          <span data-i18n="archive_title"></span><span class="chevron">▾</span>
+        </button>
+        <div id="archive-body">
+          <p class="muted" data-i18n="archive_note"></p>
+          <div id="archive-list"></div>
+        </div>
 
         <h3 data-i18n="reminder_title"></h3>
         <div id="reminder-form">

@@ -53,12 +53,16 @@
         $("landing-streak").classList.remove("hidden");
       }
       if (data.played) {
-        // Already played today: jump straight to their score card.
+        // Already played today: landing shows a done-for-today state (no redirect).
         state.result = { ...data.played, day_number: data.day_number, date: data.date, is_daily: true };
-        renderScore();
-        show("screen-score");
+        $("btn-play").classList.add("hidden");
+        $("landing-played").classList.remove("hidden");
+        $("landing-countdown").classList.remove("hidden");
+        startCountdownInto("landing-countdown");
         return;
       }
+      $("btn-play").classList.remove("hidden");
+      $("landing-played").classList.add("hidden");
     } catch (e) {
       if (e.data && e.data.error === "no_day") {
         $("landing-error").textContent = t("no_day");
@@ -102,6 +106,19 @@
     $("btn-human").classList.toggle("picked", state.answers[i] === false);
     $("btn-bot").classList.toggle("picked", state.answers[i] === true);
     $("btn-back").classList.toggle("hidden", i === 0);
+
+    // Swipe tutorial: once ever, on the first card of a daily round.
+    const wrap = $("swipe-wrap");
+    if (i === 0 && state.mode === "daily" && !localStorage.getItem("bon_seen_swipe")) {
+      wrap.classList.add("tutorial");
+      $("swipe-hint").classList.remove("hidden");
+      const frame = $("card-text");
+      frame.addEventListener("animationend", () => {
+        wrap.classList.remove("tutorial");
+        $("swipe-hint").classList.add("hidden");
+        localStorage.setItem("bon_seen_swipe", "1");
+      }, { once: true });
+    }
   }
 
   function answer(guessedBot) {
@@ -216,6 +233,7 @@
     $("score-grid").textContent = results.map((ok) => (ok ? "🟩" : "🟥")).join("");
     $("score-streak").textContent = t("streak", r.streak || 0);
     renderPlayerCount($("score-players"), r.players_today);
+    $("replay-note").classList.toggle("hidden", !r.replay);
     if (r.percentile != null) {
       $("score-percentile").textContent = t("better_than", r.percentile);
     } else {
@@ -226,6 +244,10 @@
 
   function startCountdown() {
     $("countdown").classList.remove("hidden");
+    startCountdownInto("countdown");
+  }
+
+  function startCountdownInto(elId) {
     function tick() {
       const now = new Date();
       const midnight = new Date(now);
@@ -234,7 +256,7 @@
       const h = Math.floor(ms / 3600000);
       const m = Math.floor((ms % 3600000) / 60000);
       const s = Math.floor((ms % 60000) / 1000);
-      $("countdown").textContent = t("next_in", `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`);
+      $(elId).textContent = t("next_in", `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`);
     }
     tick();
     setInterval(tick, 1000);
@@ -246,13 +268,16 @@
       const data = await api(`/api/archive?tz=${encodeURIComponent(state.tz)}`);
       const list = $("archive-list");
       list.innerHTML = "";
+      if (!data.days.length) {
+        list.innerHTML = `<p class="muted">${t("archive_empty")}</p>`;
+      }
       data.days.forEach((d) => {
         const btn = document.createElement("button");
         btn.className = "archive-item";
         btn.type = "button";
         btn.innerHTML = `<span>${t("day_label", d.day_number)}</span><span class="muted">${d.date}</span>`;
         btn.addEventListener("click", async () => {
-          const day = await api(`/api/day?date=${d.date}&lang=${state.lang}`);
+          const day = await api(`/api/day?date=${d.date}&lang=${state.lang}&tz=${encodeURIComponent(state.tz)}`);
           startRound(day, "practice");
         });
         list.appendChild(btn);
@@ -298,6 +323,12 @@
     renderScore();
     show("screen-score");
     if (state.result && state.result.is_daily) startCountdown();
+  });
+  $("landing-played").addEventListener("click", () => {
+    if (!state.result) return;
+    renderScore();
+    show("screen-score");
+    if (state.result.is_daily) startCountdown();
   });
   $("btn-tomorrow").addEventListener("click", () => {
     show("screen-landing");
@@ -440,6 +471,13 @@
   }
   swipeWrap.addEventListener("pointerup", () => endDrag(true));
   swipeWrap.addEventListener("pointercancel", () => endDrag(false));
+
+  $("archive-toggle").addEventListener("click", () => {
+    const btn = $("archive-toggle");
+    const open = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!open));
+    $("archive-body").classList.toggle("collapsed", open);
+  });
 
   initLanding();
 })();

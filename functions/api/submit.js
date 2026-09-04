@@ -24,17 +24,27 @@ export async function onRequestPost({ request, env }) {
   const day = await getDayRow(env.DB, date);
   if (!day) return json({ error: "no_day" }, 404);
 
-  const score = day.cards.reduce((acc, c, i) => acc + (answers[i] === c.is_ai ? 1 : 0), 0);
   const isDaily = date === playerToday;
 
-  // Practice rounds are stored (for per-card stats) but flagged by date mismatch
-  // only via the client; streaks only count the player's local-today play.
-  await env.DB.prepare(
-    `INSERT INTO plays (anon_id, date, score, answers_json, ts)
-     VALUES (?, ?, ?, ?, ?)
-     ON CONFLICT (anon_id, date) DO UPDATE SET
-       score = excluded.score, answers_json = excluded.answers_json, ts = excluded.ts`
-  ).bind(anonId, date, score, JSON.stringify(answers), Math.floor(Date.now() / 1000)).run();
+  // First completion is the only one that counts. A replay never overwrites the
+  // stored play: the original score/answers come back with replay: true.
+  const existing = await env.DB.prepare(
+    "SELECT score, answers_json FROM plays WHERE anon_id = ? AND date = ?"
+  ).bind(anonId, date).all();
+  let score, effectiveAnswers, replay = false;
+  if (existing.results.length) {
+    replay = true;
+    score = existing.results[0].score;
+    effectiveAnswers = JSON.parse(existing.results[0].answers_json);
+  } else {
+    score = day.cards.reduce((acc, c, i) => acc + (answers[i] === c.is_ai ? 1 : 0), 0);
+    effectiveAnswers = answers;
+    await env.DB.prepare(
+      `INSERT INTO plays (anon_id, date, score, answers_json, ts)
+       VALUES (?, ?, ?, ?, ?)
+       ON CONFLICT (anon_id, date) DO NOTHING`
+    ).bind(anonId, date, score, JSON.stringify(answers), Math.floor(Date.now() / 1000)).run();
+  }
 
   // Per-card global stats: share of players who called each card correctly.
   const { results: allPlays } = await env.DB.prepare(
@@ -51,6 +61,7 @@ export async function onRequestPost({ request, env }) {
 
   return json({
     date: day.date,
+    replay,
     day_number: day.day_number,
     score,
     is_daily: isDaily,
@@ -58,7 +69,7 @@ export async function onRequestPost({ request, env }) {
       id: c.id,
       is_ai: c.is_ai,
       tell: c.tell[lang] || c.tell.en,
-      correct: answers[i] === c.is_ai,
+      correct: effectiveAnswers[i] === c.is_ai,
       pct_correct: perCard[i],
       author: c.author || null,
     })),

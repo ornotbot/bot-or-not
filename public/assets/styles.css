@@ -233,3 +233,28 @@ h3 { font-size: 1.1rem; margin: 28px 0 8px; }
 }
 
 .players-line { color: var(--muted); font-size: 0.95rem; margin: 4px 0 10px; }
+
+/* Swipe tutorial: plays once on the first card of a player's first daily round. */
+#swipe-wrap.tutorial .card-frame { animation: teach-swipe 2.6s ease-in-out 1; }
+#swipe-wrap.tutorial #stamp-human { animation: teach-stamp-r 2.6s ease-in-out 1; }
+#swipe-wrap.tutorial #stamp-bot { animation: teach-stamp-l 2.6s ease-in-out 1; }
+@keyframes teach-swipe {
+  0% { transform: none; }
+  16% { transform: translate(70px, 8px) rotate(5deg); }
+  32% { transform: none; }
+  48% { transform: translate(-70px, 8px) rotate(-5deg); }
+  64%, 100% { transform: none; }
+}
+@keyframes teach-stamp-r { 0%, 9% { opacity: 0; } 18% { opacity: 1; } 30%, 100% { opacity: 0; } }
+@keyframes teach-stamp-l { 0%, 41% { opacity: 0; } 50% { opacity: 1; } 62%, 100% { opacity: 0; } }
+.swipe-hint { text-align: center; color: var(--muted); font-size: 0.9rem; margin: -14px 0 12px; }
+
+/* Archive as a collapsible control. */
+.archive-toggle {
+  background: none; border: none; color: inherit; font: inherit; font-weight: 800;
+  font-size: 1.1rem; cursor: pointer; display: flex; gap: 8px; align-items: center;
+  margin: 0 auto; padding: 6px 10px;
+}
+.archive-toggle .chevron { transition: transform 0.2s; color: var(--muted); }
+.archive-toggle[aria-expanded="false"] .chevron { transform: rotate(-90deg); }
+#archive-body.collapsed { display: none; }
