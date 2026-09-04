@@ -21,10 +21,18 @@ function drawShareCard({ dayNumber, score, results, streak, percentile, lang }) 
   const title = lang === "he" ? `בוט או לא #${dayNumber}` : `Bot or Not #${dayNumber}`;
   ctx.fillText(title, W / 2, 180);
 
-  // Emoji grid (5 squares)
-  ctx.font = "110px 'Apple Color Emoji', 'Noto Color Emoji', sans-serif";
-  const grid = results.map((r) => (r ? "🟩" : "🟥")).join("");
-  ctx.fillText(grid, W / 2, 380);
+  // 5 result squares, drawn (not emoji font) so the PNG renders identically everywhere
+  const sq = 130, gap = 24;
+  const totalW = results.length * sq + (results.length - 1) * gap;
+  let x = (W - totalW) / 2;
+  const y = 300;
+  for (const ok of results) {
+    ctx.fillStyle = ok ? "#2fbf71" : "#e5534b";
+    ctx.beginPath();
+    ctx.roundRect(x, y, sq, sq, 18);
+    ctx.fill();
+    x += sq + gap;
+  }
 
   // Score
   ctx.fillStyle = "#f2f4f8";
@@ -34,7 +42,7 @@ function drawShareCard({ dayNumber, score, results, streak, percentile, lang }) 
   // Streak
   ctx.font = "700 52px -apple-system, 'Segoe UI', Heebo, Arial, sans-serif";
   ctx.fillStyle = "#9aa3b2";
-  const streakLine = lang === "he" ? `רצף: ${streak} 🔥` : `Streak: ${streak} 🔥`;
+  const streakLine = lang === "he" ? `רצף: ${streak}` : `Streak: ${streak}`;
   ctx.fillText(streakLine, W / 2, 690);
 
   // Percentile - the viral payload

@@ -146,7 +146,7 @@
       const stat = c.pct_correct != null ? `<div class="stat">${t("pct_right", c.pct_correct)}</div>` : "";
       div.innerHTML =
         `<div class="head">${verdict}<span>${t("card_of", i + 1)} - ${actual}</span></div>` +
-        `<div class="tell">${escapeHtml(c.tell)}</div>${stat}`;
+        `<div class="tell" dir="auto">${escapeHtml(c.tell)}</div>${stat}`;
       list.appendChild(div);
     });
   }
