@@ -148,3 +148,29 @@ h3 { font-size: 1.1rem; margin: 28px 0 8px; }
   text-align: center;
 }
 #reminder-msg { margin-top: 10px; }
+
+/* Tinder-style swipe: drag the card, right = HUMAN, left = BOT, down = back. */
+#swipe-wrap {
+  position: relative;
+  width: 100%;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+#swipe-wrap .card-frame { cursor: grab; will-change: transform; }
+#swipe-wrap .card-frame.dragging { cursor: grabbing; }
+.stamp {
+  position: absolute;
+  top: 22px;
+  padding: 4px 12px;
+  border: 3px solid;
+  border-radius: 8px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+.stamp-human { left: 14px; color: #22c55e; border-color: #22c55e; transform: rotate(-14deg); }
+.stamp-bot { right: 14px; color: #ef4444; border-color: #ef4444; transform: rotate(14deg); }

@@ -240,8 +240,8 @@
   $("btn-play").addEventListener("click", () => {
     if (state.day) startRound(state.day, "daily");
   });
-  $("btn-human").addEventListener("click", () => answer(false));
-  $("btn-bot").addEventListener("click", () => answer(true));
+  $("btn-human").addEventListener("click", () => flyOff(1, 0));
+  $("btn-bot").addEventListener("click", () => flyOff(-1, 0));
   $("btn-back").addEventListener("click", () => {
     if (state.idx > 0) { state.idx--; renderCard(); }
   });
@@ -269,19 +269,83 @@
     });
   });
 
-  // Swipe right = back to previous card (change an answer before submitting).
-  let touchX = null;
-  $("screen-card").addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
-  $("screen-card").addEventListener("touchend", (e) => {
-    if (touchX == null) return;
-    const dx = e.changedTouches[0].clientX - touchX;
-    const rtl = state.lang === "he";
-    // In RTL "back" is a leftward swipe; in LTR it's rightward.
-    if ((rtl && dx < -60) || (!rtl && dx > 60)) {
-      if (state.idx > 0) { state.idx--; renderCard(); }
-    }
-    touchX = null;
-  }, { passive: true });
+  // Tinder-style swipe: RIGHT = HUMAN, left = BOT, down = back to previous card.
+  // Buttons below are the fallback; they trigger the same fly-off animation.
+  const swipeWrap = $("swipe-wrap");
+  const cardFrame = $("card-text");
+  const stampHuman = $("stamp-human");
+  const stampBot = $("stamp-bot");
+  const SWIPE_THRESHOLD = 90;   // px of horizontal drag to commit an answer
+  const BACK_THRESHOLD = 110;   // px of vertical drag to go back
+  let drag = null;
+  let flying = false;
+
+  function resetCardMotion() {
+    cardFrame.style.transition = "none";
+    cardFrame.style.transform = "";
+    cardFrame.classList.remove("dragging");
+    stampHuman.style.transition = "none";
+    stampBot.style.transition = "none";
+    stampHuman.style.opacity = "0";
+    stampBot.style.opacity = "0";
+  }
+
+  function flyOff(dir, dy) {
+    // dir: 1 = right (HUMAN), -1 = left (BOT)
+    if (flying) return;
+    flying = true;
+    const stamp = dir === 1 ? stampHuman : stampBot;
+    stamp.style.opacity = "1";
+    cardFrame.style.transition = "transform 0.35s ease-in";
+    cardFrame.style.transform =
+      `translate(${dir * window.innerWidth * 1.2}px, ${(dy || 0) + 40}px) rotate(${dir * 28}deg)`;
+    setTimeout(() => {
+      flying = false;
+      answer(dir === -1);
+      resetCardMotion();
+    }, 340);
+  }
+
+  function snapBack() {
+    cardFrame.style.transition = "transform 0.25s ease-out";
+    cardFrame.style.transform = "";
+    stampHuman.style.transition = "opacity 0.2s";
+    stampBot.style.transition = "opacity 0.2s";
+    stampHuman.style.opacity = "0";
+    stampBot.style.opacity = "0";
+  }
+
+  swipeWrap.addEventListener("pointerdown", (e) => {
+    if (!state.day || flying) return;
+    drag = { x0: e.clientX, y0: e.clientY, dx: 0, dy: 0 };
+    swipeWrap.setPointerCapture(e.pointerId);
+    cardFrame.style.transition = "none";
+    cardFrame.classList.add("dragging");
+  });
+  swipeWrap.addEventListener("pointermove", (e) => {
+    if (!drag) return;
+    drag.dx = e.clientX - drag.x0;
+    drag.dy = e.clientY - drag.y0;
+    cardFrame.style.transform =
+      `translate(${drag.dx}px, ${drag.dy}px) rotate(${drag.dx / 16}deg)`;
+    stampHuman.style.opacity = String(Math.max(0, Math.min(drag.dx / SWIPE_THRESHOLD, 1)));
+    stampBot.style.opacity = String(Math.max(0, Math.min(-drag.dx / SWIPE_THRESHOLD, 1)));
+  });
+  function endDrag(commit) {
+    if (!drag) return;
+    const { dx, dy } = drag;
+    drag = null;
+    cardFrame.classList.remove("dragging");
+    if (commit && dx > SWIPE_THRESHOLD) flyOff(1, dy);
+    else if (commit && dx < -SWIPE_THRESHOLD) flyOff(-1, dy);
+    else if (commit && dy > BACK_THRESHOLD && Math.abs(dx) < 60 && state.idx > 0) {
+      state.idx--;
+      renderCard();
+      resetCardMotion();
+    } else snapBack();
+  }
+  swipeWrap.addEventListener("pointerup", () => endDrag(true));
+  swipeWrap.addEventListener("pointercancel", () => endDrag(false));
 
   initLanding();
 })();

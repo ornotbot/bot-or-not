@@ -26,6 +26,11 @@ D1.
 Day boundaries are per-player: the client sends its IANA timezone and the
 server keys the round to the player's local date.
 
+## Controls
+
+- Swipe RIGHT on a card (or tap HUMAN) = guess human. Swipe LEFT (or tap BOT) = guess AI. The card follows the finger, tilts, and a HUMAN/BOT stamp fades in while dragging; release past the threshold to commit, otherwise it snaps back.
+- Swipe DOWN on a card (or tap Back) = return to the previous card to change an answer before submitting.
+
 ## Local dev
 
 Requires Node 18+ and wrangler (`npm i -g wrangler`).
