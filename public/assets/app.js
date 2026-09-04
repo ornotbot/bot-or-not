@@ -139,18 +139,57 @@
     const list = $("reveal-list");
     list.innerHTML = "";
     state.result.cards.forEach((c, i) => {
-      const div = document.createElement("div");
-      div.className = "reveal-card";
       const verdict = c.correct
-        ? `<span class="verdict-correct">✅ ${t("correct_label")}</span>`
-        : `<span class="verdict-wrong">❌ ${t("wrong_label")}</span>`;
+        ? `<span class="verdict-correct">\u2705 ${t("correct_label")}</span>`
+        : `<span class="verdict-wrong">\u274C ${t("wrong_label")}</span>`;
       const actual = c.is_ai ? t("was_bot") : t("was_human");
-      const plat = state.day.cards[i].platform ? PLATFORM_NAMES[state.day.cards[i].platform] + " · " : "";
+      const plat = state.day.cards[i].platform ? PLATFORM_NAMES[state.day.cards[i].platform] + " \u00B7 " : "";
       const stat = c.pct_correct != null ? `<div class="stat">${t("pct_right", c.pct_correct)}</div>` : "";
-      div.innerHTML =
-        `<div class="head">${verdict}<span>${plat}${t("card_of", i + 1)} - ${actual}</span></div>` +
-        `<div class="tell" dir="auto">${escapeHtml(c.tell)}</div>${stat}`;
-      list.appendChild(div);
+      const head = `<div class="head">${verdict}<span>${plat}${t("card_of", i + 1)} - ${actual}</span></div>`;
+      const tell = `<div class="tell" dir="auto">${escapeHtml(c.tell)}</div>`;
+
+      if (!c.is_ai && c.author) {
+        // Human card: flip to uncover the real author (the payoff).
+        const a = c.author;
+        const div = document.createElement("div");
+        div.className = "reveal-card flip";
+        const avatar = a.avatar
+          ? `<img class="author-avatar" src="${escapeHtml(a.avatar)}" alt="">`
+          : `<span class="author-avatar author-initial">${escapeHtml((a.name || "?").slice(0, 1).toUpperCase())}</span>`;
+        const note = a.public_figure ? `<div class="endorse-note">${t("no_endorsement")}</div>` : "";
+        div.innerHTML =
+          `<div class="flip-inner">` +
+            `<div class="flip-face flip-front">${head}${tell}${stat}` +
+              `<div class="who-hint">${t("reveal_who")}</div></div>` +
+            `<div class="flip-face flip-back">` +
+              `<div class="author-row">${avatar}<div class="author-meta">` +
+                `<div class="author-name">${escapeHtml(a.name)}</div>` +
+                `<div class="author-handle">${escapeHtml(a.handle)} \u00B7 ${escapeHtml(a.date)}</div>` +
+              `</div></div>` +
+              `<a class="author-link" href="${escapeHtml(a.source_url)}" target="_blank" rel="noopener">${t("view_original")}</a>` +
+              note +
+            `</div>` +
+          `</div>`;
+        div.addEventListener("click", (e) => {
+          if (e.target.closest("a")) return;
+          div.classList.toggle("flipped");
+        });
+        list.appendChild(div);
+        // Staggered auto-flip: the reveal is the payoff, not a stat line.
+        setTimeout(() => {
+          const inner = div.querySelector(".flip-inner");
+          const front = div.querySelector(".flip-front");
+          const back = div.querySelector(".flip-back");
+          inner.style.height = Math.max(front.scrollHeight, back.scrollHeight) + "px";
+          div.classList.add("flipped");
+        }, 350 + i * 350);
+      } else {
+        const div = document.createElement("div");
+        div.className = "reveal-card";
+        const badge = c.is_ai ? `<span class="ai-badge">${t("written_by_ai")}</span>` : "";
+        div.innerHTML = head + badge + tell + stat;
+        list.appendChild(div);
+      }
     });
   }
 

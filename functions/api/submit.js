@@ -60,6 +60,7 @@ export async function onRequestPost({ request, env }) {
       tell: c.tell[lang] || c.tell.en,
       correct: answers[i] === c.is_ai,
       pct_correct: perCard[i],
+      author: c.author || null,
     })),
     percentile: isDaily ? await computePercentile(env.DB, date, score) : null,
     streak: await computeStreak(env.DB, anonId, tz),

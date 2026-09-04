@@ -123,6 +123,20 @@ node /tmp/makeseed.js   # or re-run the generator snippet in git history
 npx wrangler d1 execute bot-or-not --remote --file=seed.sql
 ```
 
+## Card author fields + celebrity rounds
+
+Each card in days.cards_json may carry an author object, sent to the client ONLY
+after submit (publicCards in functions/api/_lib.js strips it, like is_ai/tell):
+  author: { name, handle, avatar, source_url, date, public_figure }
+- HN-sourced cards: real username + comment date + link; avatar null (initial shown).
+- Celebrity cards (days #8-9): real public X posts by public figures (Musk, Trump,
+  Altman), verified via Twitter's syndication API - text, date, and avatar all come
+  from the API response for the stored status ID. Profile photos are cached locally
+  in public/assets/authors/. Rules: genuinely public posts only, attribution shown
+  (name/handle/date/link), a "no endorsement implied" note on every public-figure
+  reveal, no private people. AI twins mimic the person's style but are original text.
+- Reveal: human cards auto-flip (staggered, tap to flip back) to uncover the author.
+
 ## API
 
 - `GET  /api/today?tz=&lang=&anon_id=` - today's 5 cards (texts + context only), plus prior result if played

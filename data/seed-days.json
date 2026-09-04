@@ -29,6 +29,14 @@
         "tell": {
           "he": "נגמר בשאלה פתוחה בלי מענה. AI סוגר מעגלים, בני אדם משאירים אותם תלויים.",
           "en": "Ends on an open question with no resolution. AI closes loops; humans leave them hanging."
+        },
+        "author": {
+          "name": "tlb",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9900581",
+          "date": "2015-07-16",
+          "public_figure": false
         }
       },
       {
@@ -43,6 +51,14 @@
         "tell": {
           "he": "ציניות עם פסיכולוגיה ספציפית ('רוקסטאר שלא יודע שהוא') - מודלים מכלילים, בני אדם מרכלים.",
           "en": "Cynical, specific psychology ('rockstar who doesn't know it'). Models generalize, humans gossip."
+        },
+        "author": {
+          "name": "s73v3r",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9998875",
+          "date": "2015-08-03",
+          "public_figure": false
         }
       },
       {
@@ -57,6 +73,14 @@
         "tell": {
           "he": "משפט חד עם טוויסט - זהב של פורומים אנושיים. AI כמעט לא מייצר משפט כל כך נצטט בלי ריפוד.",
           "en": "A quotable twist with zero padding. AI rarely lands a line this clean without hedging."
+        },
+        "author": {
+          "name": "autotune",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9999616",
+          "date": "2015-08-03",
+          "public_figure": false
         }
       },
       {
@@ -105,6 +129,14 @@
         "tell": {
           "he": "המבנה a) b) באמצע משפט והסטירה לפוסט-מורטמים ב-Medium - ניסיון חי, לא סיכום.",
           "en": "The a) b) list mid-sentence and the jab at Medium postmortems is lived experience, not summary."
+        },
+        "author": {
+          "name": "minimaxir",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9900051",
+          "date": "2015-07-16",
+          "public_figure": false
         }
       },
       {
@@ -133,6 +165,14 @@
         "tell": {
           "he": "מזכיר בוטקאמפ ספציפי ותוכנית לא גמורה. AI ממציא החלמות מעורפלות יותר.",
           "en": "Names a specific bootcamp and an unfinished plan. AI invents vaguer recoveries."
+        },
+        "author": {
+          "name": "adamzerner",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9796332",
+          "date": "2015-06-29",
+          "public_figure": false
         }
       },
       {
@@ -195,6 +235,14 @@
         "tell": {
           "he": "שגיאת הכתיב 'have a have a' שרדה. AI לא מכפיל מילים, בני אדם עייפים כן.",
           "en": "The typo 'have a have a' survived. AI doesn't double words; tired humans do."
+        },
+        "author": {
+          "name": "chrisbennet",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9952046",
+          "date": "2015-07-26",
+          "public_figure": false
         }
       },
       {
@@ -209,6 +257,14 @@
         "tell": {
           "he": "אותיות קטנות, בלי הקדמה, ו'כשהחיתול רטוב' - שום מודל לא כותב את המטאפורה הזו.",
           "en": "Lowercase, no preamble, and 'when the diaper is wet'. No model writes that metaphor."
+        },
+        "author": {
+          "name": "secondox",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9956275",
+          "date": "2015-07-27",
+          "public_figure": false
         }
       },
       {
@@ -223,6 +279,14 @@
         "tell": {
           "he": "הכרת תודה מרירה ('צ'ק בתמורה לזכות החברה שלי') - מורכבות רגשית שמודלים משטחים.",
           "en": "Bitter gratitude ('a check for the privilege of my company') is emotionally complex in a way models flatten."
+        },
+        "author": {
+          "name": "bane",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9882778",
+          "date": "2015-07-14",
+          "public_figure": false
         }
       }
     ]
@@ -271,6 +335,14 @@
         "tell": {
           "he": "אפס הקשר, ישר לפיצויים. אנשים אמיתיים בקבוצות מדלגים על ההקדמה.",
           "en": "Zero context, straight to severance. Real people in group chats skip the preamble."
+        },
+        "author": {
+          "name": "justonepost",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9881804",
+          "date": "2015-07-13",
+          "public_figure": false
         }
       },
       {
@@ -285,6 +357,14 @@
         "tell": {
           "he": "הסוגריים המגושמים '(non handicapped)' - גידוד אנושי ששום מודל לא היה מוסיף.",
           "en": "The awkward '(non handicapped)' parenthetical is a human hedge no model would add."
+        },
+        "author": {
+          "name": "late2part",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9996900",
+          "date": "2015-08-03",
+          "public_figure": false
         }
       },
       {
@@ -319,6 +399,14 @@
         "tell": {
           "he": "התיקון העצמי 'edit:' באמצע הודעה - התנהגות של פורום, לא טקסט מופק.",
           "en": "The 'edit:' self-correction mid-message is forum behavior, not generated text."
+        },
+        "author": {
+          "name": "erkkie",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9991542",
+          "date": "2015-08-02",
+          "public_figure": false
         }
       },
       {
@@ -333,6 +421,14 @@
         "tell": {
           "he": "ניסוח מעט מגושם ('differs person to person') עם נקודה אמיתית - AI חלק יותר וריק יותר.",
           "en": "Slightly clunky phrasing ('differs person to person') with a real point. AI is smoother and emptier."
+        },
+        "author": {
+          "name": "donteatbark",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9977986",
+          "date": "2015-07-30",
+          "public_figure": false
         }
       },
       {
@@ -375,6 +471,14 @@
         "tell": {
           "he": "'hehe', דקדוק שבור וחרדה מגיל 30 - כנות מבולגנת היא אנושית.",
           "en": "'hehe', broken grammar, and anxiety about turning 30. Messy sincerity is human."
+        },
+        "author": {
+          "name": "duykhoa12t",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9966017",
+          "date": "2015-07-29",
+          "public_figure": false
         }
       }
     ]
@@ -395,6 +499,14 @@
         "tell": {
           "he": "שגיאת דקדוק ('both has') ודעה נחרצת על שפות תכנות לילדים - אנושי קלאסי.",
           "en": "Grammar error ('both has') plus a strong opinion on kids' programming languages. Classic human."
+        },
+        "author": {
+          "name": "kailuowang",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9995654",
+          "date": "2015-08-03",
+          "public_figure": false
         }
       },
       {
@@ -409,6 +521,14 @@
         "tell": {
           "he": "נקודה כפולה '..' וסמיילי ':D' - הרגלי אינטרנט של פעם שמסמנים בן אדם אמיתי.",
           "en": "Double period '..' and a ':D' - pre-emoji internet mannerisms that mark a real person."
+        },
+        "author": {
+          "name": "irascible",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9949909",
+          "date": "2015-07-26",
+          "public_figure": false
         }
       },
       {
@@ -471,6 +591,14 @@
         "tell": {
           "he": "התנצלות על איות לפני הקפה, ב-edit, עם מקף - פטפוט אנושי טהור.",
           "en": "Apologizing for spelling before coffee, in an edit, with a dash. Pure human chatter."
+        },
+        "author": {
+          "name": "kabouseng",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9994177",
+          "date": "2015-08-03",
+          "public_figure": false
         }
       },
       {
@@ -499,6 +627,14 @@
         "tell": {
           "he": "נגמר ב-'Don't count on it' - פסק דין קצר ותקיף. AI מעדיף סיומות מאוזנות.",
           "en": "Ends with 'Don't count on it' - a blunt two-word verdict. AI prefers balanced closings."
+        },
+        "author": {
+          "name": "joeevans1000",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9999597",
+          "date": "2015-08-03",
+          "public_figure": false
         }
       },
       {
@@ -513,6 +649,14 @@
         "tell": {
           "he": "שתי שאלות רטוריות ברצף וסטירת רישיונות - רגיסטר ויכוחי שמודלים מרככים.",
           "en": "Two rhetorical questions in a row and a licensing jab. Models soften this argumentative register."
+        },
+        "author": {
+          "name": "m0th87",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=999924",
+          "date": "2009-12-16",
+          "public_figure": false
         }
       },
       {
@@ -527,6 +671,206 @@
         "tell": {
           "he": "טוען לשני הצדדים ונוחת בטוח. ויכוחי רישיונות אנושיים הופכים שבטיים.",
           "en": "Argues both sides then lands safe. Human licensing debates get tribal."
+        }
+      }
+    ]
+  },
+  {
+    "date": "2026-09-11",
+    "day_number": 8,
+    "cards": [
+      {
+        "id": 1,
+        "platform": "x",
+        "is_ai": true,
+        "context_label": {
+          "he": "פוסט ב-X על רכישות",
+          "en": "Post on X about buying companies"
+        },
+        "text": "Thinking about buying the alphabet. Too many letters are underperforming",
+        "tell": {
+          "he": "אבסורד הוא השפה של מאסק, אבל הציוץ האמיתי עוגן ברגע ספציפי (ימים אחרי עסקת טוויטר) עם קריצה היסטורית. החיקוי אקראי בלי עוגן - AI מחקה את הרנדומליות, לא את ההקשר.",
+          "en": "Absurdity is Musk's register, but the real one is anchored to a specific moment (days after agreeing to buy Twitter) with a historical wink. The twin is unanchored randomness - AI imitates the quirk, not the context."
+        }
+      },
+      {
+        "id": 2,
+        "platform": "x",
+        "is_ai": false,
+        "author": {
+          "name": "omnivore",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9999872",
+          "date": "2015-08-03",
+          "public_figure": false
+        },
+        "context_label": {
+          "he": "תגובה על סדרי עדיפויות בגיוס",
+          "en": "Comment about hiring priorities"
+        },
+        "text": "Well..you can't hire more developers if you're not getting customers, keeping them happy or paying your suppliers. So those other roles matter just as much as hiring a huge conclave of developers.",
+        "tell": {
+          "he": "מתחיל ב-'Well..' מגניב, מסתיים ב-'conclave of developers' - נימה מתוסכלת אמיתית בלי מסקנה נקייה. AI לא כותב 'conclave'.",
+          "en": "Opens with a deflating 'Well..', lands on 'a huge conclave of developers' - real exasperation, no tidy takeaway. AI doesn't write 'conclave'."
+        }
+      },
+      {
+        "id": 3,
+        "platform": "x",
+        "is_ai": false,
+        "author": {
+          "name": "Elon Musk",
+          "handle": "@elonmusk",
+          "avatar": "/assets/authors/elonmusk.jpg",
+          "source_url": "https://twitter.com/elonmusk/status/1519480761749016577",
+          "date": "2022-04-28",
+          "public_figure": true
+        },
+        "context_label": {
+          "he": "פוסט ב-X על רכישות",
+          "en": "Post on X about buying companies"
+        },
+        "text": "Next I’m buying Coca-Cola to put the cocaine back in",
+        "tell": {
+          "he": "הטיימינג הוא הרמז: פורסם ימים אחרי שהסכים לקנות את טוויטר - הבדיחה עובדת רק כניצחון. AI מחקה את הפורמט, אין לו הקשר של 44 מיליארד דולר.",
+          "en": "The timing is the tell: posted days after agreeing to buy Twitter, the joke only works as a victory lap. AI can mimic the format; it doesn't have a $44B context to flex about."
+        }
+      },
+      {
+        "id": 4,
+        "platform": "x",
+        "is_ai": true,
+        "context_label": {
+          "he": "תגובה על סדרי עדיפויות בגיוס",
+          "en": "Comment about hiring priorities"
+        },
+        "text": "Hiring developers feels like progress because it's measurable, but a company that can't sell, support, or pay its bills is just an expensive codebase. The bottleneck is rarely engineering capacity - it's everything around it.",
+        "tell": {
+          "he": "מאוזן, חלק, ומסתיים באפוריזם מסודר ('the bottleneck is rarely X - it's Y'). הגרסה האנושית מקטרת בלי מסקנה נקייה.",
+          "en": "Balanced, smooth, and closes with a tidy aphorism ('the bottleneck is rarely X - it's Y'). The human version just vents, no clean takeaway."
+        }
+      },
+      {
+        "id": 5,
+        "platform": "x",
+        "is_ai": false,
+        "author": {
+          "name": "kluck",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9901852",
+          "date": "2015-07-17",
+          "public_figure": false
+        },
+        "context_label": {
+          "he": "תגובה על ניתוח כישלונות של סטארטאפים",
+          "en": "Comment about startup postmortems"
+        },
+        "text": "They try to justify their next startup by claiming to have identified the reasons why their previous startup failed. (irony) Actually if they learnt something, they did not fail. Their startup just ceased to exist.",
+        "tell": {
+          "he": "מבולגן בכוונה: '(irony)' בסוגריים, הגדרה מחדש באמצע המחשבה, אין פאנץ'. AI מלטש ציניות; בן אדם פשוט חושב בקול.",
+          "en": "Messy on purpose: a parenthetical '(irony)', a redefinition mid-thought, no punchline. AI polishes cynicism; a human just thinks out loud."
+        }
+      }
+    ]
+  },
+  {
+    "date": "2026-09-12",
+    "day_number": 9,
+    "cards": [
+      {
+        "id": 1,
+        "platform": "x",
+        "is_ai": true,
+        "context_label": {
+          "he": "פוסט ב-X על קבלת החלטות",
+          "en": "Post on X about decision-making"
+        },
+        "text": "Compounding applies to reputation, knowledge, and trust. Most people only understand it for money.",
+        "tell": {
+          "he": "קצב של רשימה משולשת עם 'most people' מתנשא - מבנה מושלם, לא מתחייב על כלום. הציוץ האמיתי של אלטמן מתחייב על טענה קונטרה-אינטואיטיבית ספציפית.",
+          "en": "Triple-list cadence with a smug 'most people' kicker - structurally perfect, commits to nothing. The real Altman tweet stakes a specific counterintuitive claim (magnitude over frequency)."
+        }
+      },
+      {
+        "id": 2,
+        "platform": "x",
+        "is_ai": false,
+        "author": {
+          "name": "Donald J. Trump",
+          "handle": "@realDonaldTrump",
+          "avatar": "/assets/authors/realdonaldtrump.jpg",
+          "source_url": "https://twitter.com/realDonaldTrump/status/332308211321425920",
+          "date": "2013-05-09",
+          "public_figure": true
+        },
+        "context_label": {
+          "he": "פוסט ב-X על מבקרים",
+          "en": "Post on X about critics"
+        },
+        "text": "Sorry losers and haters, but my I.Q. is one of the highest -and you all know it! Please don't feel so stupid or insecure,it's not your fault",
+        "tell": {
+          "he": "רווחים חסרים אחרי הפסיק ו-'-and', 'I.Q.' עם נקודות, עלבון ישיר - שום עורך או מודל לא היה משאיר את זה ככה. איד בלי עריכה.",
+          "en": "Missing spaces after the comma and '-and', the punctuated 'I.Q.', a direct insult - no editor or model would leave it like this. Unfiltered id, zero cleanup."
+        }
+      },
+      {
+        "id": 3,
+        "platform": "x",
+        "is_ai": true,
+        "context_label": {
+          "he": "תגובה על ניתוח כישלונות של סטארטאפים",
+          "en": "Comment about startup postmortems"
+        },
+        "text": "Founders love to turn a failed startup into a neat list of lessons, as if the next attempt is now de-risked. But most post-mortems are stories we tell to make randomness feel like progress.",
+        "tell": {
+          "he": "ציניות מלוטשת עם משפט נעילה quotable ('make randomness feel like progress'). הגרסה האנושית מסתבכת באמצע ולא נועלת.",
+          "en": "Polished cynicism with a quotable closer ('make randomness feel like progress'). The human version tangles itself mid-thought and never lands a punchline."
+        }
+      },
+      {
+        "id": 4,
+        "platform": "x",
+        "is_ai": false,
+        "author": {
+          "name": "Sam Altman",
+          "handle": "@sama",
+          "avatar": "/assets/authors/sama.jpg",
+          "source_url": "https://twitter.com/sama/status/975913922891988992",
+          "date": "2018-03-20",
+          "public_figure": true
+        },
+        "context_label": {
+          "he": "פוסט ב-X על קבלת החלטות",
+          "en": "Post on X about decision-making"
+        },
+        "text": "You can be wrong on a lot of decisions if you are really right on a few huge ones.  Optimize for the magnitude of your good decisions, not the percentage of the time you are right.",
+        "tell": {
+          "he": "מתחייב על טענה קונטרה-אינטואיטיבית ועוצר - בלי גידרוף, בלי דוגמאות, בלי שרשור. גרסאות AI של העצה הזו כמעט תמיד מוסיפות משפט מרכך או רשימה מסודרת.",
+          "en": "Commits to a counterintuitive claim and stops - no hedging, no examples, no thread. AI versions of this advice almost always add a softening clause or a tidy list."
+        }
+      },
+      {
+        "id": 5,
+        "platform": "linkedin",
+        "is_ai": false,
+        "author": {
+          "name": "tlogan",
+          "handle": "Hacker News",
+          "avatar": null,
+          "source_url": "https://news.ycombinator.com/item?id=9948543",
+          "date": "2015-07-25",
+          "public_figure": false
+        },
+        "context_label": {
+          "he": "תגובה בלינקדאין על מזל והתמדה",
+          "en": "LinkedIn comment about luck and persistence"
+        },
+        "text": "Yes luck is there, but if you are persistent then you should eventually succeed. In 10 years one can start ~5 startups. And if after 5 failed startups one does not make it then oh well.. then she/he probably really really does not have any luck (or she/he is an idiot).",
+        "tell": {
+          "he": "ההערה בסוגריים בסוף ('or she/he is an idiot') היא בדיוק הדבר ש-AI מעדן החוצה. אמיתי, לא מלוטש, קצת לא נעים.",
+          "en": "The closing parenthetical ('or she/he is an idiot') is exactly what AI smooths away. Real, unpolished, slightly rude."
         }
       }
     ]

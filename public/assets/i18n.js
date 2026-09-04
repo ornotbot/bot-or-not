@@ -40,6 +40,10 @@ const I18N = {
     card_of: (i) => `טקסט ${i} מתוך 5`,
     day_label: (n) => `יום #${n}`,
     played_today: "כבר שיחקתם היום - הנה התוצאה שלכם:",
+    reveal_who: "מי כתב את זה?",
+    view_original: "לפוסט המקורי",
+    written_by_ai: "נכתב על ידי AI",
+    no_endorsement: "ציוץ ציבורי מוצג למשחק - אין בו משום תמיכה.",
   },
   en: {
     landing_headline: "5 texts a day. Some are human. Some are AI. Can you tell?",
@@ -81,6 +85,10 @@ const I18N = {
     card_of: (i) => `Text ${i} of 5`,
     day_label: (n) => `Day #${n}`,
     played_today: "You already played today - here's your result:",
+    reveal_who: "Who wrote it?",
+    view_original: "View original post",
+    written_by_ai: "Written by AI",
+    no_endorsement: "Public post quoted for the game - no endorsement implied.",
   },
 };
 
