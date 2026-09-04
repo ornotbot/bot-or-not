@@ -32,8 +32,8 @@
 
 /* --- LinkedIn comment --- */
 .sm-linkedin { background: #ffffff; padding: 12px 16px 10px; }
-.sm-linkedin .li-row { display: flex; gap: 8px; direction: ltr; }
-.sm-linkedin .sm-avatar { width: 48px; height: 48px; }
+.sm-linkedin .li-row { display: flex; gap: 8px; direction: ltr; align-items: flex-start; }
+.sm-linkedin .sm-avatar { width: 40px; height: 40px; margin-top: 2px; }
 .sm-linkedin .li-main { flex: 1; min-width: 0; }
 .sm-linkedin .li-head { display: flex; align-items: center; gap: 6px; }
 .sm-linkedin .li-name { width: 110px; }
@@ -57,8 +57,10 @@
 
 /* --- X post --- */
 .sm-x { background: #ffffff; padding: 12px 16px 8px; }
-.sm-x .x-row { display: flex; gap: 10px; direction: ltr; }
-.sm-x .sm-avatar { width: 40px; height: 40px; background-color: #cfd9de; }
+.sm-x .x-row { display: flex; gap: 10px; direction: ltr; align-items: flex-start; }
+.sm-x .sm-avatar { width: 40px; height: 40px; background-color: #cfd9de; margin-top: 2px; }
+.sm-x .x-head { width: 100%; }
+.sm-x .x-more { margin-inline-start: auto; color: #536471; font-weight: 700; letter-spacing: 1px; }
 .sm-x .x-main { flex: 1; min-width: 0; }
 .sm-x .x-head { display: flex; align-items: center; gap: 6px; }
 .sm-x .x-name { width: 90px; background: #b9c0ca; }
