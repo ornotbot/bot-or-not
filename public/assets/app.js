@@ -227,7 +227,7 @@
       await api("/api/reminder", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ anon_id: state.anonId, channel: reminderChannel, address, lang: state.lang }),
+        body: JSON.stringify({ anon_id: state.anonId, channel: reminderChannel, address, lang: state.lang, tz: state.tz }),
       });
       msg.textContent = t("reminder_ok");
     } catch {

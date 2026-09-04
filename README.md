@@ -82,6 +82,33 @@ so the binding picks up.
 - "Share on LinkedIn": LinkedIn's share-offsite endpoint accepts a URL only - no prefilled text - so the button first copies the score text to the clipboard, shows a "Score copied - paste it into the post" toast, then opens linkedin.com/sharing/share-offsite/?url=<game URL>.
 - "More" opens the native share sheet with the canvas share-card image where supported.
 
+## Daily reminders (worker/)
+
+Signup lives on the score screen (POST /api/reminder, stores channel/address/lang/tz in D1).
+Sending is a companion cron Worker in worker/ (Pages Functions do not support cron
+triggers, so the sender is a tiny Worker bound to the SAME D1 database):
+
+- Runs hourly at :05 (crons = ["5 * * * *"]). Sends to each subscriber whose local
+  time is 9:00-9:59 AM (their browser tz, default Asia/Jerusalem) and who has not
+  been sent to on their local date (last_sent column dedupes).
+- Email goes through Resend (https://resend.com - free tier: 100 emails/day,
+  3,000/month). Without RESEND_API_KEY the worker runs in dry-run mode and just
+  logs what it would send.
+
+Deploy steps (after the Pages project exists):
+1. Sign up at resend.com, verify the sending domain (or use onboarding@resend.dev
+   only for tests to your own address), create an API key.
+2. cd worker
+3. Paste the D1 database_id of the bot-or-not database into wrangler.toml
+   (dashboard -> Workers & Pages -> D1 -> bot-or-not).
+4. Set REMINDER_FROM in wrangler.toml to the verified sender, GAME_URL to the live URL.
+5. npx wrangler secret put RESEND_API_KEY
+6. npx wrangler deploy
+
+WhatsApp reminders: STUB ONLY (sendWhatsApp in worker/index.js is a no-op).
+Needs the WhatsApp Business Platform (Cloud API) or a provider like Twilio:
+approved business number, pre-approved message template, per-message pricing.
+
 ## Content
 
 The 3 seeded days (2026-09-03 .. 2026-09-05) are placeholder texts, marked

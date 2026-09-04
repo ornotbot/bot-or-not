@@ -24,6 +24,8 @@ CREATE TABLE IF NOT EXISTS reminders (
   channel TEXT NOT NULL,          -- 'email' | 'whatsapp'
   address TEXT NOT NULL,          -- email address or E.164 phone
   lang TEXT DEFAULT 'he',
+  tz TEXT,                      -- IANA timezone from the player's browser; NULL = game default
+  last_sent TEXT,               -- subscriber-local date (YYYY-MM-DD) of last reminder send
   ts INTEGER NOT NULL
 );
 

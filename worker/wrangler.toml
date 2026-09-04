@@ -1,0 +1,18 @@
+name = "bot-or-not-reminders"
+main = "index.js"
+compatibility_date = "2026-01-01"
+
+# Hourly at :05 - the handler sends to subscribers whose local time is ~9 AM.
+[triggers]
+crons = ["5 * * * *"]
+
+# Same D1 instance the Pages project uses (one shared reminders table).
+[[d1_databases]]
+binding = "DB"
+database_name = "bot-or-not"
+database_id = "TODO-paste-database_id-from-cloudflare-dashboard"
+
+[vars]
+GAME_URL = "https://bot-or-not.pages.dev"
+REMINDER_FROM = "Bot or Not <reminders@your-verified-domain>"
+# RESEND_API_KEY is a secret: cd worker && npx wrangler secret put RESEND_API_KEY
