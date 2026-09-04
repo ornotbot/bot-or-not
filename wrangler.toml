@@ -7,5 +7,5 @@ compatibility_date = "2026-01-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "bot-or-not"
-database_id = "TODO-paste-database_id"  # scripts/deploy.sh fills this in automatically
+database_id = "428bd275-26b9-4b8a-abb7-8297f5520945"  # scripts/deploy.sh fills this in automatically
 migrations_dir = "migrations"  # default anyway; explicit for clarity

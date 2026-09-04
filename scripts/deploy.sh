@@ -24,10 +24,17 @@ node scripts/redate-seed.js ${LAUNCH_DATE:-}
 npx wrangler d1 execute DB --remote --file seed.sql
 
 echo "== 4/5 Pages deploy =="
+npx wrangler pages project create bot-or-not --production-branch main 2>/dev/null || true
 npx wrangler pages deploy
-echo "Live at https://bot-or-not.pages.dev"
+echo "Live at the bot-or-not pages.dev URL printed above"
 
 echo "== 5/5 reminder cron worker =="
+# Cron workers need a workers.dev subdomain registered once per account (no-op if set).
+if [ -n "${CLOUDFLARE_API_TOKEN:-}" ]; then
+  curl -s -X PUT "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/subdomain" \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H 'content-type: application/json' \
+    -d '{"subdomain":"ornotbot"}' > /dev/null 2>&1 || true
+fi
 cd worker && npx wrangler deploy && cd ..
 echo "Done. Reminder emails run in dry-run mode until RESEND_API_KEY is set:"
 echo "  cd worker && npx wrangler secret put RESEND_API_KEY && npx wrangler deploy"

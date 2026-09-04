@@ -10,9 +10,9 @@ crons = ["5 * * * *"]
 [[d1_databases]]
 binding = "DB"
 database_name = "bot-or-not"
-database_id = "TODO-paste-database_id-from-cloudflare-dashboard"
+database_id = "428bd275-26b9-4b8a-abb7-8297f5520945"
 
 [vars]
-GAME_URL = "https://bot-or-not.pages.dev"
+GAME_URL = "https://bot-or-not-810.pages.dev"
 REMINDER_FROM = "Bot or Not <reminders@your-verified-domain>"
 # RESEND_API_KEY is a secret: cd worker && npx wrangler secret put RESEND_API_KEY

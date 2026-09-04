@@ -56,7 +56,7 @@ One command once Cloudflare access exists:
 
 The script: creates the D1 database (and writes its database_id into both
 wrangler.toml files), applies migrations/0001_init.sql, retimes + loads the 9
-seed days, deploys Pages (live at https://bot-or-not.pages.dev - no custom
+seed days, deploys Pages (live at https://bot-or-not-810.pages.dev - no custom
 domain needed), and deploys the reminder cron worker.
 
 API token permissions needed (Cloudflare dashboard -> My Profile -> API Tokens):
