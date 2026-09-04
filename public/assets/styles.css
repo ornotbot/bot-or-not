@@ -174,3 +174,21 @@ h3 { font-size: 1.1rem; margin: 28px 0 8px; }
 }
 .stamp-human { left: 14px; color: #22c55e; border-color: #22c55e; transform: rotate(-14deg); }
 .stamp-bot { right: 14px; color: #ef4444; border-color: #ef4444; transform: rotate(14deg); }
+
+/* Toast (e.g. LinkedIn share copies the score first). */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: #f9fafb;
+  border: 1px solid #374151;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  z-index: 50;
+  transition: opacity 0.25s;
+}
+.toast.hidden { opacity: 0; pointer-events: none; }
+.share-row { flex-wrap: wrap; justify-content: center; }

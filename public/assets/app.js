@@ -257,6 +257,51 @@
   function startCountdownOnLanding() {
     initLanding();
   }
+  function buildScoreText() {
+    const r = state.result;
+    const grid = r.cards.map((c) => (c.correct ? "\u{1F7E9}" : "\u{1F7E5}")).join("");
+    const lines = [
+      `Bot or Not #${r.day_number}`,
+      `${grid} ${r.score}/5`,
+      t("streak", r.streak || 0),
+    ];
+    if (r.percentile != null) lines.push(t("better_than", r.percentile));
+    return lines.join("\n");
+  }
+
+  function showToast(msg) {
+    const el = $("toast");
+    el.textContent = msg;
+    el.classList.remove("hidden");
+    setTimeout(() => el.classList.add("hidden"), 2500);
+  }
+
+  $("btn-share-x").addEventListener("click", () => {
+    if (!state.result) return;
+    const url = window.location.origin;
+    const intent = "https://twitter.com/intent/tweet?text=" +
+      encodeURIComponent(buildScoreText()) + "&url=" + encodeURIComponent(url);
+    window.open(intent, "_blank", "noopener");
+  });
+
+  $("btn-share-linkedin").addEventListener("click", async () => {
+    if (!state.result) return;
+    // LinkedIn share-offsite accepts a URL only - copy the score text first.
+    try {
+      await navigator.clipboard.writeText(buildScoreText() + "\n" + window.location.origin);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = buildScoreText() + "\n" + window.location.origin;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      ta.remove();
+    }
+    showToast(t("share_copied"));
+    window.open("https://www.linkedin.com/sharing/share-offsite/?url=" +
+      encodeURIComponent(window.location.origin), "_blank", "noopener");
+  });
+
   $("btn-share").addEventListener("click", async () => {
     if (!state.result) return;
     await shareCard({

@@ -76,6 +76,12 @@ npx wrangler pages deploy public --project-name bot-or-not
 After binding, redeploy once (`npx wrangler pages deploy public --project-name bot-or-not`)
 so the binding picks up.
 
+## Sharing
+
+- "Share on X" opens twitter.com/intent/tweet with the score text prefilled (emoji grid, score, streak, percentile) plus the game URL.
+- "Share on LinkedIn": LinkedIn's share-offsite endpoint accepts a URL only - no prefilled text - so the button first copies the score text to the clipboard, shows a "Score copied - paste it into the post" toast, then opens linkedin.com/sharing/share-offsite/?url=<game URL>.
+- "More" opens the native share sheet with the canvas share-card image where supported.
+
 ## Content
 
 The 3 seeded days (2026-09-03 .. 2026-09-05) are placeholder texts, marked
