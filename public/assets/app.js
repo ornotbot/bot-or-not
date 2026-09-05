@@ -163,7 +163,7 @@
       $("btn-human").disabled = false;
       $("btn-bot").disabled = false;
       $("scoring").classList.add("hidden");
-      alert(t("reminder_err"));
+      alert(t("submit_err"));
     }
   }
 
@@ -299,31 +299,6 @@
       });
     } catch { /* archive is below the fold; fail quiet */ }
   }
-
-  // ---------- reminder opt-in ----------
-  let reminderChannel = "email";
-  document.querySelectorAll(".reminder-channels .chip").forEach((chip) => {
-    chip.addEventListener("click", () => {
-      document.querySelectorAll(".reminder-channels .chip").forEach((c) => c.classList.remove("selected"));
-      chip.classList.add("selected");
-      reminderChannel = chip.dataset.channel;
-    });
-  });
-  $("btn-reminder").addEventListener("click", async () => {
-    const address = $("reminder-address").value.trim();
-    const msg = $("reminder-msg");
-    try {
-      await api("/api/reminder", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ anon_id: state.anonId, channel: reminderChannel, address, lang: state.lang, tz: state.tz }),
-      });
-      msg.textContent = t("reminder_ok");
-    } catch {
-      msg.textContent = t("reminder_err");
-    }
-    msg.classList.remove("hidden");
-  });
 
   // ---------- events ----------
   $("btn-play").addEventListener("click", () => {

@@ -1,5 +1,5 @@
 -- Bot or Not - D1 schema
--- Two core tables per spec section 4, plus a reminders opt-in table.
+-- Two core tables per spec section 4.
 
 CREATE TABLE IF NOT EXISTS days (
   date TEXT PRIMARY KEY,          -- game day, YYYY-MM-DD (player-local date key)
@@ -18,15 +18,5 @@ CREATE TABLE IF NOT EXISTS plays (
   PRIMARY KEY (anon_id, date)
 );
 
-CREATE TABLE IF NOT EXISTS reminders (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  anon_id TEXT,
-  channel TEXT NOT NULL,          -- 'email' | 'whatsapp'
-  address TEXT NOT NULL,          -- email address or E.164 phone
-  lang TEXT DEFAULT 'he',
-  tz TEXT,                      -- IANA timezone from the player's browser; NULL = game default
-  last_sent TEXT,               -- subscriber-local date (YYYY-MM-DD) of last reminder send
-  ts INTEGER NOT NULL
-);
 
 CREATE INDEX IF NOT EXISTS idx_plays_date ON plays(date);

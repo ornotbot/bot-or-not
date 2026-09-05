@@ -141,13 +141,6 @@ h3 { font-size: 1.1rem; margin: 28px 0 8px; }
   padding: 12px 16px; cursor: pointer; color: var(--text); width: 100%;
   font-size: 0.95rem;
 }
-.reminder-channels { display: flex; gap: 10px; justify-content: center; margin-bottom: 12px; }
-#reminder-address {
-  width: 100%; padding: 14px; border-radius: 12px; border: 1px solid #2a3140;
-  background: var(--panel); color: var(--text); font-size: 1rem; margin-bottom: 12px;
-  text-align: center;
-}
-#reminder-msg { margin-top: 10px; }
 
 /* Tinder-style swipe: drag the card, right = HUMAN, left = BOT, down = back. */
 #swipe-wrap {
