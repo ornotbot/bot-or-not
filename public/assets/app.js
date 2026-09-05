@@ -329,7 +329,7 @@
   }
   function buildScoreText() {
     const r = state.result;
-    const grid = r.cards.map((c) => (c.correct ? "\u{1F7E9}" : "\u{1F7E5}")).join("");
+    const grid = r.cards.map((c) => (c.correct ? "\u{1F7E9}" : "\u2B1B")).join("");
     const lines = [
       `Bot or Not #${r.day_number}`,
       `${grid} ${r.score}/5`,
